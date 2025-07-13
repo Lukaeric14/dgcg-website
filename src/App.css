@@ -185,13 +185,31 @@ body, html, #root, .app-container {
   animation: fadeIn 0.5s ease-in-out;
 }
 
-.manifesto-section h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+.manifesto-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
   color: #fff;
+  font-size: 1.2rem;
   font-weight: 500;
   font-family: 'Cormorant Garamond', serif;
-  letter-spacing: 0.5px;
+  text-align: left;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 10px;
+  transition: opacity 0.2s ease;
+}
+
+.manifesto-toggle:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.manifesto-toggle:focus {
+  outline: none;
+  text-decoration: underline;
 }
 
 .manifesto-section p {
