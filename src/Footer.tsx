@@ -4,10 +4,10 @@ import './Footer.css';
 const Footer: React.FC = () => (
   <footer className="footer">
     <div className="footer-left">
-      © 2025 Abundance AI. All rights reserved.
+      © 2025 DGCG. All rights reserved.
     </div>
     <div className="footer-right">
-      info@abudunance.ae
+      info@dgcgroup.co
     </div>
   </footer>
 );

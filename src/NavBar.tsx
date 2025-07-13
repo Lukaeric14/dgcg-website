@@ -10,10 +10,9 @@ const NavBar: React.FC<NavBarProps> = ({ onManifestoClick }) => {
     <nav className="navbar">
       <img
         className="navbar-logo"
-        src={process.env.PUBLIC_URL + '/Icon.png'}
+        src={process.env.PUBLIC_URL + '/iconlong.png'}
         alt="Logo"
-        width={36}
-        height={68}
+        style={{ height: '40px', width: 'auto' }}
       />
       <div className="navbar-links">
         <button className="navbar-link" style={{background: 'none', border: 'none', padding: 0, cursor: 'pointer'}} onClick={onManifestoClick}>Our Manifesto</button>

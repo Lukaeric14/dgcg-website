@@ -1,62 +1,108 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import NavBar from './NavBar';
-import Hero from './Hero';
-import Footer from './Footer';
-import ManifestoOverlay from './ManifestoOverlay';
 
 function App() {
-  const [manifestoOpen, setManifestoOpen] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
-  const [videoError, setVideoError] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-    useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Promise that resolves when the video can play through
-    const canPlayPromise = new Promise<void>((resolve) => {
-      video.oncanplaythrough = () => resolve();
-    });
-
-    // Promise that resolves after a timeout (e.g., 5 seconds) as a fallback
-    const timeoutPromise = new Promise<void>((resolve) => {
-      setTimeout(resolve, 5000);
-    });
-
-    // Wait for either the video to be ready or the timeout, whichever comes first
-    const videoPromise = Promise.race([canPlayPromise, timeoutPromise]);
-
-    const fontPromise = document.fonts.ready;
-
-    Promise.all([videoPromise, fontPromise]).then(() => {
-      setIsLoading(false);
-    });
-  }, []);
+  const [showManifesto, setShowManifesto] = useState(false);
+  const [displayText, setDisplayText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  
+  const manifestoText = "We believe that true prosperity—of families, communities, and nations—springs from the seeds of education we sow today. Our mission is to cultivate every child's potential, equipping them to flourish in the real world with knowledge, confidence, and purpose.";
+  
+  const handleManifestoClick = () => {
+    if (!showManifesto) {
+      setShowManifesto(true);
+      setDisplayText('');
+      setIsTyping(true);
+    } else {
+      setShowManifesto(false);
+    }
+  };
+  
+  useEffect(() => {
+    if (!isTyping || !showManifesto) return;
+    
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= manifestoText.length) {
+        setDisplayText(manifestoText.substring(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+        setIsTyping(false);
+      }
+    }, 20);
+    
+    return () => clearInterval(typingInterval);
+  }, [showManifesto, isTyping]);
 
   return (
-    <div className={`App ${isLoading ? 'loading' : 'loaded'}`}>
-      <NavBar onManifestoClick={() => setManifestoOpen(true)} />
-      <Hero />
-            {videoError ? (
-        <img src={process.env.PUBLIC_URL + '/fallbackimage.png'} className="App-bg-video" alt="background" />
-      ) : (
-        <video
-          ref={videoRef}
-          className="App-bg-video"
-          onError={() => setVideoError(true)}
-        src={process.env.PUBLIC_URL + '/Move-In-Precise-Speed.mp4'}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        aria-label="Background video of precise movement"
-        />
-      )}
-      <ManifestoOverlay open={manifestoOpen} onClose={() => setManifestoOpen(false)} />
-      <Footer />
+    <div className="app-container">
+      {/* David Image */}
+      <img 
+        className="david-image" 
+        src={process.env.PUBLIC_URL + '/david.png'} 
+        alt="David"
+      />
+      
+      {/* Navigation */}
+      <nav className="main-nav">
+        <div className="logo-container">
+          <img 
+            src={process.env.PUBLIC_URL + '/iconlong.png'} 
+            alt="DGCG Logo" 
+            style={{ height: '40px', width: 'auto' }}
+          />
+        </div>
+        
+        <div className="nav-links">
+          <button className="nav-link" onClick={handleManifestoClick}>
+            Our Manifesto
+          </button>
+          <a 
+            href="https://www.linkedin.com/company/dgcg/about/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="nav-link"
+          >
+            Socials
+          </a>
+        </div>
+      </nav>
+      
+      {/* Main Content */}
+      <div className="content-container">
+        <div className="hero-section">
+          <h1 className="hero-title">David / Goliath</h1>
+          <p className="hero-subtitle">
+            [ Capital Group ] - /de'v'd/ /ɡəˈla'.əθ/
+          </p>
+          
+          <div className="manifesto-section">
+            <button 
+              className="manifesto-toggle" 
+              onClick={handleManifestoClick}
+            >
+              Manifesto:
+            </button>
+            {showManifesto && (
+              <p>
+                {displayText}
+                {isTyping && <span className="cursor">|</span>}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+      
+      {/* Footer */}
+      <footer className="main-footer">
+        <div className="footer-content">
+          <div className="copyright">© 2025 DGCG. All rights reserved.</div>
+          <div className="contact">info@dgcgroup.co</div>
+        </div>
+      </footer>
+      
+
     </div>
   );
 }
