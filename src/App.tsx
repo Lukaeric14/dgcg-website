@@ -6,7 +6,7 @@ function App() {
   const [displayText, setDisplayText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   
-  const manifestoText = "We believe that true prosperity—of families, communities, and nations—springs from the seeds of education we sow today. Our mission is to cultivate every child's potential, equipping them to flourish in the real world with knowledge, confidence, and purpose.";
+  const manifestoText = "Our mission is to back those who dare to build something better. We support driven founders who see gaps in the system, who refuse to settle for the way things are, and who are ready to take on entrenched giants with sharper ideas, stronger purpose, and relentless execution.\n\nBecause the future doesn’t belong to the biggest—it belongs to the bravest.";
   
   const handleManifestoClick = () => {
     if (!showManifesto) {
@@ -74,7 +74,7 @@ function App() {
         <div className="hero-section">
           <h1 className="hero-title">David / Goliath</h1>
           <p className="hero-subtitle">
-            [ Capital Group ] - /de'v'd/ /ɡəˈla'.əθ/
+            [ Consulting Group ] - /de'v'd/ /ɡəˈla'.əθ/
           </p>
           
           <div className="manifesto-section">

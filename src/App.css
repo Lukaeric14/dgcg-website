@@ -213,7 +213,7 @@ body, html, #root, .app-container {
 }
 
 .manifesto-section p {
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.85);
   font-family: 'Cormorant Garamond', serif;

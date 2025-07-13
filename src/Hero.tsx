@@ -6,7 +6,7 @@ const Hero: React.FC = () => (
     <div className="hero-content">
       <h1 className="hero-title">David / Goliath</h1>
       <p className="hero-subtitle">
-        [Capital Group]  -  /dəˈvid/ /ɡəˈla'.əθ/
+        [Consulting Group]  -  /dəˈvid/ /ɡəˈla'.əθ/
       </p>
     </div>
     <img 

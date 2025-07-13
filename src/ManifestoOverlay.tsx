@@ -7,7 +7,9 @@ interface ManifestoOverlayProps {
 }
 
 const title = 'Manifesto:';
-const manifesto = `We believe that true prosperity—of families, communities, and nations—springs from the seeds of education we sow today. Our mission is to cultivate every child’s potential, equipping them to flourish in the real world with knowledge, confidence, and purpose.`;
+const manifesto = `Our mission is to back those who dare to build something better. We support driven founders who see gaps in the system, who refuse to settle for the way things are, and who are ready to take on entrenched giants with sharper ideas, stronger purpose, and relentless execution.
+
+Because the future doesn’t belong to the biggest—it belongs to the bravest.`;
 
 const TYPE_SPEED = 45; // ms per character (slower)
 
