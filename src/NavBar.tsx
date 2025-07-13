@@ -1,4 +1,5 @@
 import React from 'react';
+import logoImage from './assets/iconlong.png';
 import './NavBar.css';
 
 interface NavBarProps {
@@ -10,7 +11,7 @@ const NavBar: React.FC<NavBarProps> = ({ onManifestoClick }) => {
     <nav className="navbar">
       <img
         className="navbar-logo"
-        src={process.env.PUBLIC_URL + '/iconlong.png'}
+        src={logoImage}
         alt="Logo"
         style={{ height: '40px', width: 'auto' }}
       />

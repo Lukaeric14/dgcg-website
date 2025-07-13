@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import davidImage from './assets/david.png';
+import logoImage from './assets/iconlong.png';
 import './App.css';
 
 function App() {
@@ -40,7 +42,7 @@ function App() {
       {/* David Image */}
       <img 
         className="david-image" 
-        src={process.env.PUBLIC_URL + '/david.png'} 
+        src={davidImage} 
         alt="David"
       />
       
@@ -48,7 +50,7 @@ function App() {
       <nav className="main-nav">
         <div className="logo-container">
           <img 
-            src={process.env.PUBLIC_URL + '/iconlong.png'} 
+            src={logoImage} 
             alt="DGCG Logo" 
             style={{ height: '40px', width: 'auto' }}
           />
