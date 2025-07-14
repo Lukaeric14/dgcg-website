@@ -1,31 +1,20 @@
 {
   "short_name": "DGCG",
   "name": "David Goliath Capital Group",
-  "description": "Backing the bravest founders who dare to build something better",
   "icons": [
     {
       "src": "iconlong.png",
-      "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "sizes": "192x192"
     },
     {
       "src": "iconlong.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
-  "start_url": "/",
+  "start_url": ".",
   "display": "standalone",
-  "orientation": "portrait",
   "theme_color": "#000000",
-  "background_color": "#000000",
-  "categories": ["finance", "business", "investing"],
-  "screenshots": [
-    {
-      "src": "og-image.jpg",
-      "sizes": "1200x630",
-      "type": "image/jpeg"
-    }
-  ]
+  "background_color": "#ffffff"
 }

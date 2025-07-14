@@ -23,13 +23,16 @@ body, html, #root, .app-container {
 
 /* David Image */
 .david-image {
-  position: absolute;
-  left: -2px;
-  top: 185px;
-  width: 1244px;
-  height: 932px;
-  object-fit: cover;
+  position: fixed;
+  bottom: 0;
+  left: 30%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  object-fit: contain;
   z-index: 1;
+  pointer-events: none; /* Allow clicks to pass through the image */
 }
 
 /* Navigation */
@@ -110,12 +113,19 @@ body, html, #root, .app-container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 200px 40px 100px;
+  padding: 25vh 40px 100px; /* Adjusted top padding */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Aligns content to the top */
 }
 
 .hero-section {
+  position: relative;
+  z-index: 2;
   max-width: 665px;
-  margin-left: auto;
+  align-self: flex-end; /* Aligns hero section to the right */
+  margin-bottom: 5vh; /* Moves hero up slightly */
 }
 
 .hero-title {
@@ -181,6 +191,7 @@ body, html, #root, .app-container {
 /* Manifesto Overlay */
 .manifesto-section {
   margin-top: 20px;
+  min-height: 220px; /* Prevents layout shift during animation */
   max-width: 600px;
   animation: fadeIn 0.5s ease-in-out;
 }
@@ -212,6 +223,7 @@ body, html, #root, .app-container {
   text-decoration: underline;
 }
 
+
 .manifesto-section p {
   font-size: 1.2rem;
   line-height: 1.6;
@@ -219,6 +231,8 @@ body, html, #root, .app-container {
   font-family: 'Cormorant Garamond', serif;
   margin: 0;
   font-weight: 300;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .cursor {
@@ -253,12 +267,6 @@ body, html, #root, .app-container {
 
 /* Responsive Design */
 @media (max-width: 1200px) {
-  .david-image {
-    width: 80%;
-    height: auto;
-    top: 50%;
-    transform: translateY(-50%);
-  }
   
   .hero-title {
     font-size: 60px;
@@ -274,6 +282,11 @@ body, html, #root, .app-container {
 }
 
 @media (max-width: 768px) {
+  .david-image {
+    max-width: 100%;
+    opacity: 0.5; /* Make image more subtle on small screens */
+  }
+
   .main-nav {
     left: 20px;
     width: calc(100% - 40px);
