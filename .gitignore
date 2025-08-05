@@ -1,0 +1,51 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+/test-results
+/tests
+playwright-report/
+*.spec.ts
+*.test.ts
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary documentation files
+COMPREHENSIVE-TEST-REPORT.md
+TEST-EXECUTION-SUMMARY.md
+WORKSTEAMS-QA.md
+MAILGUN_SETUP_GUIDE.md
+NEWSLETTER_SETUP.md
+
+# Database and schema files (temporary)
+*.sql
+*.schema
+
+# Configuration files that can be regenerated
+playwright.config.ts
+
+# Images (temporary/test only - be specific!)
+*.png~
+iteration-*.png
+featured-article-component.png
+final-featured-component.png
+iteration-800px.png
+iteration-featured-component.png
+iteration-full-page.png

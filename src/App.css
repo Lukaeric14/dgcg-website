@@ -1,0 +1,339 @@
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html, #root, .app-container {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Cormorant Garamond', serif;
+  background-color: oklch(0.2050 0 0);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.app-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* David Image */
+.david-image {
+  position: fixed;
+  bottom: 0;
+  left: 30%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  object-fit: contain;
+  z-index: 1;
+  pointer-events: none; /* Allow clicks to pass through the image */
+}
+
+/* Navigation */
+.main-nav {
+  position: absolute;
+  left: 46px;
+  top: 24px;
+  width: calc(100% - 92px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 23px 20px;
+  box-shadow: 0px 4.53px 6.8px -4.53px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.8px);
+  z-index: 10;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 9.26px;
+}
+
+.logo-icon {
+  position: relative;
+  width: 27px;
+  height: 33px;
+  overflow: hidden;
+}
+
+.logo-box {
+  position: absolute;
+  left: 2px;
+  outline: 1.99px white solid;
+  outline-offset: -0.99px;
+  width: 22px;
+}
+
+.logo-box.middle {
+  top: 12px;
+  height: 20px;
+}
+
+.logo-box.small {
+  top: 20px;
+  height: 12px;
+}
+
+.logo-text {
+  font-size: 30.73px;
+  font-weight: 600;
+  line-height: 27.35px;
+  text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0;
+  position: relative;
+}
+
+/* Main Content */
+.content-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 25vh 40px 100px; /* Adjusted top padding */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Aligns content to the top */
+}
+
+.hero-section {
+  position: relative;
+  z-index: 2;
+  max-width: 665px;
+  align-self: flex-end; /* Aligns hero section to the right */
+  margin-bottom: 5vh; /* Moves hero up slightly */
+}
+
+.hero-title {
+  font-size: 77.65px;
+  font-weight: 600;
+  line-height: 69.11px;
+  margin-bottom: 20px;
+  text-shadow: 0px 7px 15px rgba(0, 0, 0, 0.05);
+}
+
+.hero-subtitle {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 26.4px;
+  margin-bottom: 40px;
+  text-shadow: 0px 7px 15px rgba(0, 0, 0, 0.05);
+}
+
+.manifesto-section h3 {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 26.4px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 12px;
+  text-shadow: 0px 7px 15px rgba(0, 0, 0, 0.05);
+}
+
+.manifesto-section p {
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 26.4px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0px 7px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Footer */
+.main-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 40px;
+  z-index: 5;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1567px;
+  margin: 0 auto;
+  width: calc(100% - 80px);
+}
+
+.copyright,
+.contact {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 21.6px;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0px 7px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Manifesto Overlay */
+.manifesto-section {
+  margin-top: 20px;
+  min-height: 220px; /* Prevents layout shift during animation */
+  max-width: 600px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.manifesto-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: 'Cormorant Garamond', serif;
+  text-align: left;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 10px;
+  transition: opacity 0.2s ease;
+}
+
+.manifesto-toggle:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.manifesto-toggle:focus {
+  outline: none;
+  text-decoration: underline;
+}
+
+
+.manifesto-section p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: 'Cormorant Garamond', serif;
+  margin: 0;
+  font-weight: 300;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  color: #fff;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  
+  .hero-title {
+    font-size: 60px;
+    line-height: 1.1;
+  }
+  
+  .hero-subtitle,
+  .manifesto-section h3,
+  .manifesto-section p {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 768px) {
+  .david-image {
+    max-width: 100%;
+    opacity: 0.5; /* Make image more subtle on small screens */
+  }
+
+  .main-nav {
+    left: 20px;
+    width: calc(100% - 40px);
+    padding: 15px 10px;
+  }
+  
+  .logo-text {
+    font-size: 24px;
+  }
+  
+  .content-container {
+    padding: 150px 20px 100px;
+  }
+  
+  .hero-section {
+    max-width: 100%;
+  }
+  
+  .hero-title {
+    font-size: 48px;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 36px;
+  }
+  
+  .hero-subtitle,
+  .manifesto-section h3,
+  .manifesto-section p {
+    font-size: 16px;
+  }
+  
+  .main-nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+  }
+}

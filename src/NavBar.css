@@ -1,0 +1,150 @@
+.navbar {
+  width: 100vw;
+  box-sizing: border-box;
+  padding: 23px 20px;
+  overflow: hidden;
+  backdrop-filter: blur(6.8px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: linear-gradient(to bottom, rgba(20, 20, 20, 0.32) 0%, rgba(20, 20, 20, 0.0) 100%);
+}
+
+.navbar-logo {
+  width: 32px;
+  height: 60px;
+  position: relative;
+  object-fit: contain;
+  margin-left: 20px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.navbar-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 41px;
+  min-width: 105px;
+  padding: 0 14px;
+  border-radius: 6.8px;
+  color: rgba(255, 255, 255, 0.90);
+  font-size: 18px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  line-height: 22.66px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.navbar-link:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 16px 16px;
+    align-items: center;
+  }
+  .navbar-links {
+    gap: 10px;
+  }
+  .navbar-link {
+    font-size: 14px;
+    height: 38px;
+    min-width: auto;
+    padding: 0 10px;
+  }
+  .navbar-logo {
+    width: 28px;
+    height: 52px;
+    margin-left: 0;
+  }
+}
+
+.navbar-user-menu {
+  position: relative;
+  margin-right: 3rem;
+}
+
+.navbar-user-button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.90);
+  font-size: 18px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 6.8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  height: 41px;
+  min-width: 105px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-user-button:hover {
+  color: #fff;
+}
+
+.navbar-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  min-width: 160px;
+  z-index: 50;
+}
+
+.navbar-dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  color: #374151;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  transition: background-color 0.2s ease;
+}
+
+.navbar-dropdown-item:hover {
+  background-color: #f9fafb;
+}
+
+.navbar-dropdown-item:first-child {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.navbar-dropdown-item:last-child {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.navbar-signout {
+  border-top: 1px solid #e5e7eb;
+  color: #dc2626;
+}
+
+.navbar-signout:hover {
+  background-color: #fef2f2;
+} 

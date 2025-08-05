@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    
+    /* Cormorant Garamond Font Variables */
+    --cormorant-body-font-family: "Cormorant Garamond", Helvetica;
+    --cormorant-body-font-size: 20px;
+    --cormorant-body-font-style: normal;
+    --cormorant-body-font-weight: 400;
+    --cormorant-body-letter-spacing: 0.2px;
+    --cormorant-body-line-height: 120.00000476837158%;
+    --cormorant-display-font-family: "Cormorant Garamond", Helvetica;
+    --cormorant-display-font-size: 64px;
+    --cormorant-display-font-style: normal;
+    --cormorant-display-font-weight: 700;
+    --cormorant-display-letter-spacing: -1.28px;
+    --cormorant-display-line-height: 120.00000476837158%;
+    --cormorant-h1-font-family: "Cormorant Garamond", Helvetica;
+    --cormorant-h1-font-size: 40px;
+    --cormorant-h1-font-style: normal;
+    --cormorant-h1-font-weight: 600;
+    --cormorant-h1-letter-spacing: -0.8px;
+    --cormorant-h1-line-height: 120.00000476837158%;
+    --cormorant-h2-font-family: "Cormorant Garamond", Helvetica;
+    --cormorant-h2-font-size: 28px;
+    --cormorant-h2-font-style: normal;
+    --cormorant-h2-font-weight: 600;
+    --cormorant-h2-letter-spacing: -0.56px;
+    --cormorant-h2-line-height: 120.00000476837158%;
+    --palatino-body-font-family: "Palatino", Helvetica;
+    --palatino-body-font-size: 20px;
+    --palatino-body-font-style: normal;
+    --palatino-body-font-weight: 400;
+    --palatino-body-letter-spacing: -0.2px;
+    --palatino-body-line-height: 120.00000476837158%;
+    --palatino-h2-title-font-family: "Palatino", Helvetica;
+    --palatino-h2-title-font-size: 28px;
+    --palatino-h2-title-font-style: normal;
+    --palatino-h2-title-font-weight: 700;
+    --palatino-h2-title-letter-spacing: -0.56px;
+    --palatino-h2-title-line-height: 120.00000476837158%;
+    --palatino-h3-font-family: "Cormorant Garamond", Helvetica;
+    --palatino-h3-font-size: 24px;
+    --palatino-h3-font-style: normal;
+    --palatino-h3-font-weight: 500;
+    --palatino-h3-letter-spacing: -0.48px;
+    --palatino-h3-line-height: 120.00000476837158%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
