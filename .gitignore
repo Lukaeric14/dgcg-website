@@ -98,3 +98,6 @@ pids
 
 # TernJS port file
 .tern-port
+
+# Supabase temp files
+supabase/.temp/
