@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+.unsubscribe-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.unsubscribe-container {
+  width: 100%;
+  max-width: 480px;
+}
+
+.unsubscribe-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.unsubscribe-card .card-header {
+  padding: 32px 32px 24px;
+}
+
+.unsubscribe-card .card-content {
+  padding: 0 32px 32px;
+}
+
+.unsubscribe-icon,
+.success-icon,
+.preferences-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  color: #64748b;
+}
+
+.success-icon {
+  color: #10b981;
+}
+
+.preferences-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 8px 0 0;
+}
+
+.unsubscribe-card h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 8px;
+}
+
+.unsubscribe-subtitle {
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.error-message {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+}
+
+.error-message p {
+  color: #dc2626;
+  font-size: 14px;
+  margin: 0;
+}
+
+.unsubscribe-form,
+.manual-unsubscribe {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.email-display {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.email-display label {
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+}
+
+.user-email {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 12px 16px;
+  color: #1e293b;
+  font-weight: 500;
+  margin: 0;
+}
+
+.preferences-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.preferences-label {
+  font-weight: 500;
+  color: #374151;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.preference-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.preference-item:hover {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.preference-label {
+  color: #374151;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-field label {
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+}
+
+.email-input {
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.unsubscribe-button {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.unsubscribe-button:hover:not(:disabled) {
+  background-color: #b91c1c;
+}
+
+.unsubscribe-button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.manual-help {
+  color: #64748b;
+  font-size: 14px;
+  text-align: center;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.contact-section {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 20px;
+  margin-top: 8px;
+}
+
+.contact-text {
+  color: #64748b;
+  font-size: 14px;
+  text-align: center;
+  margin: 0;
+}
+
+.contact-text a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.contact-text a:hover {
+  text-decoration: underline;
+}
+
+/* Success card styles */
+.success-card {
+  border-color: #10b981;
+}
+
+.success-message {
+  color: #059669;
+  font-size: 16px;
+  margin: 0 0 12px;
+  font-weight: 500;
+}
+
+.redirect-message {
+  color: #64748b;
+  font-size: 14px;
+  margin: 0 0 24px;
+}
+
+.home-button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.home-button:hover {
+  background-color: #2563eb;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .unsubscribe-page {
+    padding: 16px;
+  }
+  
+  .unsubscribe-card .card-header {
+    padding: 24px 24px 20px;
+  }
+  
+  .unsubscribe-card .card-content {
+    padding: 0 24px 24px;
+  }
+  
+  .unsubscribe-icon,
+  .success-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .unsubscribe-card h2 {
+    font-size: 20px;
+  }
+  
+  .unsubscribe-subtitle {
+    font-size: 14px;
+  }
+  
+  .preference-item {
+    padding: 10px 12px;
+  }
+  
+  .preference-label {
+    font-size: 13px;
+  }
+}

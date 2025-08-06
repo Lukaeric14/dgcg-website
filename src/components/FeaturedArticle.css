@@ -1,0 +1,134 @@
+.featured-article-link {
+  display: block;
+  text-decoration: none;
+}
+
+.featured-article-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  background-color: transparent;
+  border: none;
+  margin: 0 auto;
+}
+
+.featured-card-content {
+  padding: 0;
+  width: 100%;
+}
+
+.featured-article-image {
+  align-self: stretch;
+  position: relative;
+  height: auto;
+  object-fit: cover;
+}
+
+.featured-article-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.featured-article-title-text {
+  align-self: stretch;
+  margin-top: -1px;
+  text-shadow: 0px 4.94px 10.58px #0000000d;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: var(--cormorant-h2-font-weight);
+  color: white;
+  font-size: var(--cormorant-h2-font-size);
+  letter-spacing: var(--cormorant-h2-letter-spacing);
+  line-height: var(--cormorant-h2-line-height);
+  font-style: var(--cormorant-h2-font-style);
+  transition: color 0.2s, text-shadow 0.2s;
+  cursor: pointer;
+}
+
+.featured-article-link:hover .featured-article-title-text {
+  color: #e0e0e0;
+}
+
+.featured-article-abstract {
+  align-self: stretch;
+  text-shadow: 0px 4.94px 10.58px #0000000d;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: var(--cormorant-body-font-weight);
+  color: white;
+  font-size: var(--cormorant-body-font-size);
+  letter-spacing: var(--cormorant-body-letter-spacing);
+  line-height: var(--cormorant-body-line-height);
+  font-style: var(--cormorant-body-font-style);
+}
+
+.featured-article-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 21px;
+}
+
+.author-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 9999px;
+}
+
+.author-details {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.175rem;
+}
+
+.author-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: regular;
+  color: white;
+  font-size: 20px;
+  letter-spacing: 0.2px;
+  line-height: 1.2;
+}
+
+.publication-date {
+  font-family: 'Cormorant Garamond', serif;
+  color: white;
+  font-size: 20px;
+  letter-spacing: 0.2px;
+  line-height: 1.2;
+}
+
+.navigation-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.navigation-button {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 0px;
+  padding: 0;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation-icon {
+  height: 23px;
+  width: 23px;
+  color: white;
+}
