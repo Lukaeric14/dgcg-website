@@ -31,7 +31,6 @@ interface Article {
 }
 
 const ArticlesManager: React.FC = () => {
-  const { user } = useAuth();
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [showEditor, setShowEditor] = useState(false);

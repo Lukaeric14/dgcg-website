@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
-import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import {
   Table,
@@ -19,7 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { Search, Users, Mail, Calendar, Filter } from "lucide-react";
+import { Search, Users, Filter } from "lucide-react";
 import './SubscribersManager.css';
 
 interface Subscriber {
@@ -33,7 +32,6 @@ interface Subscriber {
 }
 
 const SubscribersManager: React.FC = () => {
-  const { user } = useAuth();
   const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
