@@ -8,6 +8,7 @@ import PricingPage from './components/PricingPage';
 import Login from './components/Login';
 import Register from './components/Register';
 import ArticlePage from './components/ArticlePage';
+import ArticlePageV2 from './components/ArticlePageV2';
 import AdminDashboard from './components/AdminDashboard';
 import Unsubscribe from './components/Unsubscribe';
 import NavBar from './NavBar';
@@ -48,7 +49,7 @@ class ErrorBoundary extends React.Component<
 
 function AppContent() {
   const location = useLocation();
-  const hideNav = location.pathname === '/login' || location.pathname === '/register' || location.pathname.startsWith('/admin');
+  const hideNav = location.pathname === '/login' || location.pathname === '/register' || location.pathname.startsWith('/admin') || location.pathname.startsWith('/article-v2');
 
   console.log('AppContent rendering, location:', location.pathname);
 
@@ -60,6 +61,8 @@ function AppContent() {
         <Route path="/test" element={<TestComponent />} />
         <Route path="/home" element={<Home />} />
         <Route path="/article/:id" element={<ArticlePage />} />
+        <Route path="/article-v2/:id" element={<ArticlePageV2 />} />
+        <Route path="/article-v2" element={<ArticlePageV2 />} />
         <Route path="/blog/pricing" element={<PricingPage />} />
         <Route path="/consulting" element={<Consulting />} />
         <Route path="/login" element={<Login />} />
