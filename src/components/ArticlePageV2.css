@@ -6,6 +6,24 @@
   flex-direction: column;
 }
 
+/* Loading, Error, and Not Found States */
+.loading-container,
+.error-container,
+.not-found-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+.loading-text,
+.error-text,
+.not-found-text {
+  text-align: center;
+  font-size: 24px;
+}
+
 /* Navigation */
 .article-nav {
   position: sticky;

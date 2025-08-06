@@ -1,4 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { supabase } from '../lib/supabase';
+// import { getUserInitials } from '../lib/utils'; // Future use for fallback avatars
+import david from '../assets/david.png';
+import quillbotLogo from '../assets/quillbot.png';
 import './ArticlePageV2.css';
 
 // SVG Logo Icon (extracted from Figma)
@@ -10,14 +15,17 @@ const LogoIcon: React.FC = () => (
   </svg>
 );
 
-interface ArticleData {
+interface Article {
   id: string;
   title: string;
   abstract: string;
   body: string;
-  image: string;
+  image: string | null;
   created_at: string;
-  author: {
+  author_id: string;
+  author?: {
+    id: string;
+    email: string;
     full_name: string;
     avatar_url: string;
   };
@@ -27,32 +35,135 @@ interface ArticleData {
   human_written_percent: number;
 }
 
-interface ArticlePageV2Props {
-  article?: ArticleData;
-}
+const ArticlePageV2: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const [article, setArticle] = useState<Article | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-const ArticlePageV2: React.FC<ArticlePageV2Props> = ({ 
-  article = {
-    id: '1',
-    title: 'The Rise of David: A New Era in AI Innovation',
-    abstract: 'In a groundbreaking development, the world of artificial intelligence is witnessing a paradigm shift. Experts at Capital Group have unveiled a new AI model, dubbed "David", designed to tackle complex challenges in various sectors. This innovative technology promises to enhance decision-making processes and improve efficiency across industries.',
-    body: `In a groundbreaking development, the world of artificial intelligence is witnessing a paradigm shift. Experts at Capital Group have unveiled a new AI model, dubbed "David", designed to tackle complex challenges in various sectors. This innovative technology promises to enhance decision-making processes and improve efficiency across industries.
+  useEffect(() => {
+    const fetchArticle = async () => {
+      // If no ID is provided, use the first article or create sample data
+      if (!id) {
+        try {
+          setLoading(true);
+          const { data, error } = await supabase
+            .from('articles')
+            .select(`
+              *,
+              author:users_profiles(
+                id,
+                email,
+                full_name,
+                avatar_url
+              )
+            `)
+            .order('created_at', { ascending: false })
+            .limit(1)
+            .single();
+
+          if (error) {
+            throw error;
+          }
+
+          if (data) {
+            setArticle(data);
+          }
+        } catch (err) {
+          // If no articles exist, use sample data
+          console.warn('No articles found, using sample data:', err);
+          setArticle({
+            id: 'sample',
+            title: 'The Rise of David: A New Era in AI Innovation',
+            abstract: 'In a groundbreaking development, the world of artificial intelligence is witnessing a paradigm shift. Experts at Capital Group have unveiled a new AI model, dubbed "David", designed to tackle complex challenges in various sectors. This innovative technology promises to enhance decision-making processes and improve efficiency across industries.',
+            body: `In a groundbreaking development, the world of artificial intelligence is witnessing a paradigm shift. Experts at Capital Group have unveiled a new AI model, dubbed "David", designed to tackle complex challenges in various sectors. This innovative technology promises to enhance decision-making processes and improve efficiency across industries.
 
 Groundbreaking development, the world of artificial intelligence is witnessing a paradigm shift. Experts at Capital Group have unveiled a new AI model, dubbed "David", designed to tackle complex challenges in various sectors. This innovative technology promises to enhance decision-making processes and improve efficiency across industries. In a groundbreaking development, the world of artificial intelligence is witnessing a paradigm shift.
 
 In a groundbreaking development, the world of artificial intelligence is witnessing a paradigm shift. Experts at Capital Group have unveiled a new AI model, dubbed "David", designed to tackle complex challenges in various sectors. This innovative technology promises to enhance decision-making processes and improve efficiency across industries.`,
-    image: '/src/assets/david.png',
-    created_at: '2025-07-31',
-    author: {
-      full_name: 'Luka Erić',
-      avatar_url: '/src/assets/david.png'
-    },
-    ai_generated_percent: 0,
-    ai_generated_ai_refined_percent: 11,
-    human_written_ai_refined_percent: 43,
-    human_written_percent: 46
+            image: david,
+            created_at: '2025-07-31',
+            author_id: 'sample',
+            author: {
+              id: 'sample',
+              email: 'luka@dgcg.com',
+              full_name: 'Luka Erić',
+              avatar_url: david
+            },
+            ai_generated_percent: 0,
+            ai_generated_ai_refined_percent: 11,
+            human_written_ai_refined_percent: 43,
+            human_written_percent: 46
+          });
+        } finally {
+          setLoading(false);
+        }
+        return;
+      }
+
+      // Fetch specific article by ID
+      try {
+        setLoading(true);
+        const { data, error } = await supabase
+          .from('articles')
+          .select(`
+            *,
+            author:users_profiles(
+              id,
+              email,
+              full_name,
+              avatar_url
+            )
+          `)
+          .eq('id', id)
+          .single();
+
+        if (error) {
+          throw error;
+        }
+
+        if (data) {
+          setArticle(data);
+        }
+      } catch (err) {
+        setError((err as Error).message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticle();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="article-page-v2">
+        <div className="loading-container">
+          <div className="loading-text text-cormorant-body text-white">Loading article...</div>
+        </div>
+      </div>
+    );
   }
-}) => {
+
+  if (error) {
+    return (
+      <div className="article-page-v2">
+        <div className="error-container">
+          <div className="error-text text-cormorant-body text-white">Error: {error}</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!article) {
+    return (
+      <div className="article-page-v2">
+        <div className="not-found-container">
+          <div className="not-found-text text-cormorant-body text-white">Article not found.</div>
+        </div>
+      </div>
+    );
+  }
   const formattedDate = new Date(article.created_at).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -92,9 +203,11 @@ In a groundbreaking development, the world of artificial intelligence is witness
           </h1>
 
           {/* Featured Image */}
-          <div className="article-image">
-            <img src={article.image} alt={article.title} />
-          </div>
+          {article.image && (
+            <div className="article-image">
+              <img src={article.image} alt={article.title} />
+            </div>
+          )}
 
           {/* Sidebar Content */}
           <div className="article-sidebar">
@@ -163,11 +276,14 @@ In a groundbreaking development, the world of artificial intelligence is witness
             <div className="attribution-section">
               <div className="author-info">
                 <div className="author-avatar">
-                  <img src={article.author.avatar_url} alt={article.author.full_name} />
+                  <img 
+                    src={article.author?.avatar_url || david} 
+                    alt={article.author?.full_name || 'Author'} 
+                  />
                 </div>
                 <div className="author-details">
                   <div className="author-name text-cormorant-body text-white-full letter-spacing-normal">
-                    {article.author.full_name}
+                    {article.author?.full_name || article.author?.email || 'Author'}
                   </div>
                   <div className="publication-date text-cormorant-body text-white letter-spacing-normal">
                     {formattedDate}
@@ -180,7 +296,7 @@ In a groundbreaking development, the world of artificial intelligence is witness
                   By Quillbot
                 </span>
                 <div className="quillbot-logo">
-                  <img src="/src/assets/quillbot.png" alt="Quillbot Logo" />
+                  <img src={quillbotLogo} alt="Quillbot Logo" />
                 </div>
               </div>
             </div>
@@ -188,15 +304,10 @@ In a groundbreaking development, the world of artificial intelligence is witness
 
           {/* Article Body */}
           <div className="article-body">
-            <div className="article-content text-palatino-body text-white text-justify letter-spacing-tight">
-              {article.body.split('\n').map((paragraph, index) => 
-                paragraph.trim() ? (
-                  <p key={index}>{paragraph}</p>
-                ) : (
-                  <br key={index} />
-                )
-              )}
-            </div>
+            <div 
+              className="article-content text-palatino-body text-white text-justify letter-spacing-tight"
+              dangerouslySetInnerHTML={{ __html: article.body }}
+            />
           </div>
         </div>
       </main>
