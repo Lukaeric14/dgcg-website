@@ -29,7 +29,7 @@ import {
 import './AdminDashboard.css';
 
 const AdminDashboard: React.FC = () => {
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
   const location = useLocation();
   
   // Determine current section based on URL

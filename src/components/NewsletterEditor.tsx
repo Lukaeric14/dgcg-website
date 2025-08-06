@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
 import { useEditor, EditorContent } from '@tiptap/react';
@@ -126,25 +126,7 @@ const NewsletterEditor: React.FC<NewsletterEditorProps> = ({ newsletterId, onBac
     },
   });
 
-  useEffect(() => {
-    if (newsletterId) {
-      fetchNewsletter();
-    }
-  }, [newsletterId]);
-
-  useEffect(() => {
-    if (editor && formData.body !== editor.getHTML()) {
-      editor.commands.setContent(formData.body);
-    }
-  }, [formData.body, editor]);
-
-  useEffect(() => {
-    if (zenEditor && formData.body !== zenEditor.getHTML()) {
-      zenEditor.commands.setContent(formData.body);
-    }
-  }, [formData.body, zenEditor]);
-
-  const fetchNewsletter = async () => {
+  const fetchNewsletter = useCallback(async () => {
     if (!newsletterId) return;
     
     setLoading(true);
@@ -172,7 +154,25 @@ const NewsletterEditor: React.FC<NewsletterEditorProps> = ({ newsletterId, onBac
     } finally {
       setLoading(false);
     }
-  };
+  }, [newsletterId, setFormData, setLoading]);
+
+  useEffect(() => {
+    if (newsletterId) {
+      fetchNewsletter();
+    }
+  }, [newsletterId, fetchNewsletter]);
+
+  useEffect(() => {
+    if (editor && formData.body !== editor.getHTML()) {
+      editor.commands.setContent(formData.body);
+    }
+  }, [formData.body, editor]);
+
+  useEffect(() => {
+    if (zenEditor && formData.body !== zenEditor.getHTML()) {
+      zenEditor.commands.setContent(formData.body);
+    }
+  }, [formData.body, zenEditor]);
 
   const handleSave = async (statusToSave: 'draft' | 'sent' = 'draft') => {
     if (!user) return;

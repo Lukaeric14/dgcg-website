@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
 import { useEditor, EditorContent } from '@tiptap/react';
@@ -133,25 +133,7 @@ const ArticleEditor: React.FC<ArticleEditorProps> = ({ articleId, onBack }) => {
     },
   });
 
-  useEffect(() => {
-    if (articleId) {
-      fetchArticle();
-    }
-  }, [articleId]);
-
-  useEffect(() => {
-    if (editor && formData.body !== editor.getHTML()) {
-      editor.commands.setContent(formData.body);
-    }
-  }, [formData.body, editor]);
-
-  useEffect(() => {
-    if (zenEditor && formData.body !== zenEditor.getHTML()) {
-      zenEditor.commands.setContent(formData.body);
-    }
-  }, [formData.body, zenEditor]);
-
-  const fetchArticle = async () => {
+  const fetchArticle = useCallback(async () => {
     if (!articleId) return;
     
     setLoading(true);
@@ -182,7 +164,25 @@ const ArticleEditor: React.FC<ArticleEditorProps> = ({ articleId, onBack }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [articleId, setFormData, setLoading]);
+
+  useEffect(() => {
+    if (articleId) {
+      fetchArticle();
+    }
+  }, [articleId, fetchArticle]);
+
+  useEffect(() => {
+    if (editor && formData.body !== editor.getHTML()) {
+      editor.commands.setContent(formData.body);
+    }
+  }, [formData.body, editor]);
+
+  useEffect(() => {
+    if (zenEditor && formData.body !== zenEditor.getHTML()) {
+      zenEditor.commands.setContent(formData.body);
+    }
+  }, [formData.body, zenEditor]);
 
   const handleSave = async () => {
     if (!user) return;
@@ -253,7 +253,7 @@ const ArticleEditor: React.FC<ArticleEditorProps> = ({ articleId, onBack }) => {
       const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
       
       // Upload to Supabase Storage
-      const { data, error } = await supabase.storage
+      const { error } = await supabase.storage
         .from('article-images')
         .upload(fileName, file);
 
@@ -417,7 +417,7 @@ const ArticleEditor: React.FC<ArticleEditorProps> = ({ articleId, onBack }) => {
                   {formData.image && (
                     <img
                       src={formData.image}
-                      alt="Featured image preview"
+                      alt="Featured"
                       className="image-preview"
                     />
                   )}

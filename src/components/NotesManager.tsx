@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
 import { Button } from "./ui/button";
@@ -48,6 +48,29 @@ const NotesManager: React.FC = () => {
     tags: [] as string[]
   });
 
+  const fetchNotes = useCallback(async () => {
+    if (!user) return;
+    
+    setLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from('notes')
+        .select('*')
+        .eq('author_id', user.id)
+        .order('updated_at', { ascending: false });
+
+      if (error) {
+        console.error('Error fetching notes:', error);
+      } else {
+        setNotes(data || []);
+      }
+    } catch (error) {
+      console.error('Error in fetchNotes:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, [user, setNotes, setLoading]);
+
   useEffect(() => {
     const loadNotes = async () => {
       if (user) {
@@ -55,7 +78,7 @@ const NotesManager: React.FC = () => {
       }
     };
     loadNotes();
-  }, [user]);
+  }, [user, fetchNotes]);
 
   // Auto-save effect - triggers when form data changes
   useEffect(() => {
@@ -91,29 +114,6 @@ const NotesManager: React.FC = () => {
       }
     };
   }, [autoSaveTimeout]);
-
-  const fetchNotes = async () => {
-    if (!user) return;
-    
-    setLoading(true);
-    try {
-      const { data, error } = await supabase
-        .from('notes')
-        .select('*')
-        .eq('author_id', user.id)
-        .order('updated_at', { ascending: false });
-
-      if (error) {
-        console.error('Error fetching notes:', error);
-      } else {
-        setNotes(data || []);
-      }
-    } catch (error) {
-      console.error('Error in fetchNotes:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleAutoSave = async () => {
     if (!user || !formData.title.trim()) return;
