@@ -14,6 +14,7 @@ import {
   ListIcon,
   SearchIcon,
   SettingsIcon,
+  StickyNote,
   UsersIcon,
 } from "lucide-react"
 
@@ -131,9 +132,9 @@ const data = {
   ],
   documents: [
     {
-      name: "Data Library",
-      url: "#",
-      icon: DatabaseIcon,
+      name: "Notes",
+      url: "/admin/notes",
+      icon: StickyNote,
     },
     {
       name: "Reports",

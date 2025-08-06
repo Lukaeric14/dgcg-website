@@ -5,6 +5,7 @@ import { supabase } from '../lib/supabase';
 import ArticlesManager from './ArticlesManager';
 import SubscribersManager from './SubscribersManager';
 import NewsletterManager from './NewsletterManager';
+import NotesManager from './NotesManager';
 import { activityLogger, Activity } from '../lib/activityLogger';
 import {
   SidebarProvider,
@@ -38,6 +39,7 @@ const AdminDashboard: React.FC = () => {
     if (path.includes('/newsletter')) return 'newsletter';
     if (path.includes('/analytics')) return 'analytics';
     if (path.includes('/subscribers')) return 'subscribers';
+    if (path.includes('/notes')) return 'notes';
     return 'dashboard';
   };
 
@@ -201,6 +203,8 @@ const AdminDashboard: React.FC = () => {
             <SubscribersManager />
           ) : currentSection === 'newsletter' ? (
             <NewsletterManager />
+          ) : currentSection === 'notes' ? (
+            <NotesManager />
           ) : (
             <>
               <div className="admin-content-header">

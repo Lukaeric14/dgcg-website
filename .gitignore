@@ -9,6 +9,9 @@
 /coverage
 /test-results
 /playwright-report
+/tests
+*.spec.ts
+*.test.ts
 
 # production
 /build
@@ -101,3 +104,26 @@ pids
 
 # Supabase temp files
 supabase/.temp/
+
+# Temporary documentation files
+COMPREHENSIVE-TEST-REPORT.md
+TEST-EXECUTION-SUMMARY.md
+WORKSTEAMS-QA.md
+MAILGUN_SETUP_GUIDE.md
+NEWSLETTER_SETUP.md
+
+# Database and schema files (temporary)
+*.sql
+*.schema
+
+# Configuration files that can be regenerated
+playwright.config.ts
+
+# Images (temporary/test only - be specific!)
+*.png~
+iteration-*.png
+featured-article-component.png
+final-featured-component.png
+iteration-800px.png
+iteration-featured-component.png
+iteration-full-page.png
