@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
-import { useAuth } from '../contexts/AuthContext';
 import ArticleEditor from './ArticleEditor';
 import { Button } from "./ui/button";
 import {
@@ -31,7 +30,6 @@ interface Article {
 }
 
 const ArticlesManager: React.FC = () => {
-  const { user } = useAuth();
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [showEditor, setShowEditor] = useState(false);

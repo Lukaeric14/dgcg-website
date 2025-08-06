@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { supabase, uploadUserAvatar, getUserProfile, updateUserProfile, testSupabaseConnection, deleteUserAvatar } from '../lib/supabase';
+import { supabase, uploadUserAvatar, getUserProfile, testSupabaseConnection, deleteUserAvatar } from '../lib/supabase';
 import { getUserInitials } from '../lib/utils';
 import {
   Dialog,
@@ -19,7 +19,6 @@ import { Separator } from './ui/separator';
 import { Badge } from './ui/badge';
 import { 
   User, 
-  Mail, 
   Lock, 
   Bell, 
   CreditCard, 

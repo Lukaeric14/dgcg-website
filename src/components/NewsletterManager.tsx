@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
-import { useAuth } from '../contexts/AuthContext';
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import {
@@ -19,7 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { Plus, Pencil, Trash2, Send, Eye, Calendar } from "lucide-react";
+import { Plus, Pencil, Trash2, Send } from "lucide-react";
 import NewsletterEditor from './NewsletterEditor';
 import './NewsletterManager.css';
 
@@ -41,7 +40,6 @@ interface Newsletter {
 }
 
 const NewsletterManager: React.FC = () => {
-  const { user } = useAuth();
   const [newsletters, setNewsletters] = useState<Newsletter[]>([]);
   const [loading, setLoading] = useState(true);
   const [showEditor, setShowEditor] = useState(false);
