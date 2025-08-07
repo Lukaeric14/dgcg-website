@@ -17,6 +17,18 @@
 - **Allowed**: Dynamic values (CSS custom properties, transforms, animations)
 - **Allowed**: Functional requirements (hidden file inputs)
 
+## Tech Stack
+
+- **Framework**: React 18 with TypeScript
+- **Styling**: CSS files (no CSS-in-JS, no styled-components)
+- **Routing**: React Router for route-based CSS loading
+- **Build Tool**: Vite
+- **UI Components**: Custom components with Tailwind-inspired utility classes
+- **State Management**: React Context (AuthContext)
+- **Backend**: Supabase for data and authentication
+- **Deployment**: Vercel
+- **Content**: All content (e.g., article titles, bodies) must be dynamically loaded from Supabase/backend—never use static placeholders or Figma text in components.
+
 ## Component Creation Guidelines
 
 ### When Creating New Components
