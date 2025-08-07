@@ -228,7 +228,10 @@ const AdminDashboard: React.FC = () => {
             </Breadcrumb>
           </div>
           <div className="admin-header-user">
-            <span className="admin-welcome">Welcome back, {user.email?.split('@')[0]}</span>
+            <span className="admin-welcome">Welcome back, {(() => {
+              const name = user.email?.split('@')[0];
+              return name ? name.charAt(0).toUpperCase() + name.slice(1) : 'User';
+            })()}</span>
           </div>
         </header>
         

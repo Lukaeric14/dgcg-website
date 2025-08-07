@@ -56,11 +56,8 @@
 
 .popular-badge {
   background: linear-gradient(45deg, #ff6b6b, #ffa500);
-  color: white;
   padding: 8px 16px;
   border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 500;
 }
 
 .pricing-card-header {
@@ -73,7 +70,6 @@
 }
 
 .pricing-card-description {
-  color: #d1d5db;
   margin: 0 0 16px 0;
   line-height: 1.4;
 }
@@ -82,14 +78,8 @@
   margin-top: 16px;
 }
 
-.price-amount {
-  color: #ffffff;
-}
-
 .price-period {
-  color: #d1d5db;
   margin-left: 4px;
-  font-size: 1rem;
 }
 
 .pricing-card-content {
@@ -107,7 +97,6 @@
   align-items: flex-start;
   margin-bottom: 12px;
   line-height: 1.5;
-  color: #e5e7eb;
 }
 
 .features-list li:last-child {
@@ -122,8 +111,6 @@
   width: 100%;
   padding: 12px 24px;
   border-radius: 6px;
-  font-size: 0.875rem;
-  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
   border: 1px solid transparent;
@@ -134,7 +121,6 @@
 
 .pricing-btn-primary {
   background-color: #ffffff;
-  color: #111827;
   border-color: #ffffff;
 }
 
@@ -145,7 +131,6 @@
 
 .pricing-btn-outline {
   background-color: transparent;
-  color: #ffffff;
   border-color: #6b7280;
 }
 
@@ -168,7 +153,6 @@
   margin-top: 20px;
   padding: 12px 24px;
   background: rgba(255, 255, 255, 0.2);
-  color: white;
   text-decoration: none;
   border-radius: 6px;
   transition: background 0.3s ease;

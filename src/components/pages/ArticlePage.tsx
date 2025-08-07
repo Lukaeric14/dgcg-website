@@ -273,14 +273,6 @@ const ArticlePage: React.FC = () => {
         <div 
           className="article-body-main article-page-body text-cormorant-body text-white letter-spacing-tight"
           dangerouslySetInnerHTML={{ __html: article.body }}
-          style={{ 
-            overflow: 'visible', 
-            display: 'block',
-            height: 'auto',
-            maxHeight: 'none',
-            whiteSpace: 'normal',
-            wordWrap: 'break-word'
-          }}
         />
       </div>
     </div>

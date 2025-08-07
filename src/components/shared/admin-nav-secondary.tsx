@@ -11,7 +11,7 @@ import {
   SidebarMenuItem,
 } from "../ui/sidebar"
 
-export function NavSecondary({
+export function AdminNavSecondary({
   items,
   onSettingsClick,
   ...props
@@ -51,4 +51,4 @@ export function NavSecondary({
       </SidebarGroupContent>
     </SidebarGroup>
   )
-}
+} 

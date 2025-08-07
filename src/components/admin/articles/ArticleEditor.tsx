@@ -445,8 +445,8 @@ const ArticleEditor: React.FC<ArticleEditorProps> = ({ articleId, onBack }) => {
 
               <div className="ai-content-section">
                 <h4>AI Attribution</h4>
-                <div className="percentage-fields" style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-                  <div className="percentage-field" style={{ flex: 1 }}>
+                <div className="percentage-fields">
+                  <div className="percentage-field">
                     <Label htmlFor="ai_generated_percent">AI Generated %</Label>
                     <Input
                       id="ai_generated_percent"
@@ -457,7 +457,7 @@ const ArticleEditor: React.FC<ArticleEditorProps> = ({ articleId, onBack }) => {
                       onChange={(e) => handleInputChange('ai_generated_percent', parseInt(e.target.value) || 0)}
                     />
                   </div>
-                  <div className="percentage-field" style={{ flex: 1 }}>
+                  <div className="percentage-field">
                     <Label htmlFor="ai_generated_ai_refined_percent">AI Generated + AI Refined %</Label>
                     <Input
                       id="ai_generated_ai_refined_percent"
@@ -472,8 +472,8 @@ const ArticleEditor: React.FC<ArticleEditorProps> = ({ articleId, onBack }) => {
               </div>
               <div className="ai-content-section">
                 <h4>Human Attribution</h4>
-                <div className="percentage-fields" style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-                  <div className="percentage-field" style={{ flex: 1 }}>
+                <div className="percentage-fields">
+                  <div className="percentage-field">
                     <Label htmlFor="human_written_ai_refined_percent">Human Written + AI Refined %</Label>
                     <Input
                       id="human_written_ai_refined_percent"
@@ -484,7 +484,7 @@ const ArticleEditor: React.FC<ArticleEditorProps> = ({ articleId, onBack }) => {
                       onChange={(e) => handleInputChange('human_written_ai_refined_percent', parseInt(e.target.value) || 0)}
                     />
                   </div>
-                  <div className="percentage-field" style={{ flex: 1 }}>
+                  <div className="percentage-field">
                     <Label htmlFor="human_written_percent">Human Written %</Label>
                     <Input
                       id="human_written_percent"

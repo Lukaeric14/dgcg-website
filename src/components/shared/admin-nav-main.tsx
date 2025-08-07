@@ -10,7 +10,7 @@ import {
   SidebarMenuItem,
 } from "../ui/sidebar"
 
-export function NavMain({
+export function AdminNavMain({
   items,
 }: {
   items: {
@@ -56,4 +56,4 @@ export function NavMain({
       </SidebarGroupContent>
     </SidebarGroup>
   )
-}
+} 

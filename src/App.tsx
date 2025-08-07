@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import { AuthProvider } from './contexts/AuthContext';
@@ -11,7 +11,7 @@ import ArticlePage from './components/pages/ArticlePage';
 import ArticlePageV2 from './components/pages/ArticlePageV2';
 import AdminDashboard from './components/admin/dashboard/AdminDashboard';
 import Unsubscribe from './components/pages/Unsubscribe';
-import NavBar from './NavBar';
+import UnifiedNavBar from './components/shared/UnifiedNavBar';
 
 // Error Boundary Component
 class ErrorBoundary extends React.Component<
@@ -34,7 +34,7 @@ class ErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{ padding: '20px', textAlign: 'center' }}>
+        <div className="error-boundary">
           <h1>Something went wrong.</h1>
           <p>Please check the console for more details.</p>
           <button onClick={() => window.location.reload()}>Reload Page</button>
@@ -48,13 +48,26 @@ class ErrorBoundary extends React.Component<
 
 function AppContent() {
   const location = useLocation();
-  const hideNav = location.pathname === '/login' || location.pathname === '/register' || location.pathname.startsWith('/admin') || location.pathname.startsWith('/article-v2');
+  const hideNav = location.pathname === '/login' || location.pathname === '/register' || location.pathname.startsWith('/admin');
+  const isAdminRoute = location.pathname.startsWith('/admin');
 
   console.log('AppContent rendering, location:', location.pathname);
 
+  // Conditionally import admin CSS
+  useEffect(() => {
+    if (isAdminRoute) {
+      import('./admin.css');
+    }
+  }, [isAdminRoute]);
+
+  const handleManifestoClick = () => {
+    // Navigate to consulting page which has the manifesto functionality
+    window.location.href = '/consulting';
+  };
+
   return (
     <>
-      {!hideNav && <NavBar />}
+      {!hideNav && <UnifiedNavBar onManifestoClick={handleManifestoClick} />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />

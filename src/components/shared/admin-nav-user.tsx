@@ -28,7 +28,7 @@ import {
 } from "../ui/sidebar"
 import { getUserInitials } from "../../lib/utils"
 
-export function NavUser({
+export function AdminNavUser({
   user,
   onAccountClick,
   onBillingClick,
@@ -114,4 +114,4 @@ export function NavUser({
       </SidebarMenuItem>
     </SidebarMenu>
   )
-}
+} 

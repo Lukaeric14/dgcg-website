@@ -1,10 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 .article-editor {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: 'Inter', sans-serif;
   background-color: #f8fafc;
 }
 
@@ -13,8 +10,6 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-size: 18px;
-  color: #6b7280;
 }
 
 .article-editor-header {
@@ -37,7 +32,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #6b7280;
 }
 
 .back-icon {
@@ -46,9 +40,6 @@
 }
 
 .article-editor-title {
-  font-size: 24px;
-  font-weight: 600;
-  color: #111827;
   margin: 0;
 }
 
@@ -57,11 +48,9 @@
   align-items: center;
   gap: 8px;
   background-color: #1f2937;
-  color: white;
   border: none;
   padding: 8px 16px;
   border-radius: 6px;
-  font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -135,8 +124,6 @@
 }
 
 .setting-field label {
-  font-weight: 500;
-  color: #374151;
   font-size: 14px;
 }
 
@@ -145,9 +132,7 @@
   border: 1px solid #d1d5db;
   border-radius: 6px;
   padding: 8px 12px;
-  font-size: 14px;
   transition: border-color 0.2s;
-  font-family: 'Inter', sans-serif;
 }
 
 .setting-field input:focus,
@@ -161,10 +146,8 @@
   border: 1px solid #d1d5db;
   border-radius: 6px;
   padding: 8px 12px;
-  font-size: 14px;
   min-height: 80px;
   resize: vertical;
-  font-family: 'Inter', sans-serif;
   transition: border-color 0.2s;
 }
 
@@ -181,28 +164,21 @@
 }
 
 .ai-content-section h4 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #111827;
   margin: 0;
 }
 
 .percentage-fields {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 .percentage-field {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex: 1;
 }
 
 .percentage-field label {
   font-size: 13px;
-  font-weight: 500;
-  color: #374151;
 }
 
 .percentage-field input {
@@ -232,7 +208,6 @@
   border: 1px solid #d1d5db;
   background: white;
   border-radius: 6px;
-  font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -261,8 +236,6 @@
   background-color: #f0f9ff;
   border: 1px solid #0ea5e9;
   border-radius: 6px;
-  color: #0369a1;
-  font-size: 14px;
 }
 
 .article-editor-main {
@@ -314,7 +287,6 @@
 .toolbar-group button.is-active {
   background-color: #2563eb;
   border-color: #2563eb;
-  color: white;
 }
 
 .toolbar-group button:disabled {
@@ -341,9 +313,7 @@
   padding: 24px;
   border: none;
   outline: none;
-  font-size: 16px;
   line-height: 1.6;
-  color: #111827;
 }
 
 /* Tiptap Editor Styles */
@@ -354,24 +324,15 @@
 }
 
 .tiptap-editor h1 {
-  font-size: 2em;
-  font-weight: 700;
   margin: 1em 0 0.5em 0;
-  color: #111827;
 }
 
 .tiptap-editor h2 {
-  font-size: 1.5em;
-  font-weight: 600;
   margin: 1em 0 0.5em 0;
-  color: #111827;
 }
 
 .tiptap-editor h3 {
-  font-size: 1.25em;
-  font-weight: 600;
   margin: 1em 0 0.5em 0;
-  color: #111827;
 }
 
 .tiptap-editor p {
@@ -399,14 +360,12 @@
   border-radius: 4px;
   padding: 2px 4px;
   font-family: 'Monaco', 'Consolas', monospace;
-  font-size: 0.9em;
 }
 
 .tiptap-editor blockquote {
   border-left: 4px solid #e5e7eb;
   margin: 1em 0;
   padding-left: 1em;
-  color: #6b7280;
   font-style: italic;
 }
 
@@ -421,13 +380,8 @@
 }
 
 .tiptap-editor a {
-  color: #2563eb;
   text-decoration: underline;
   cursor: pointer;
-}
-
-.tiptap-editor a:hover {
-  color: #1d4ed8;
 }
 
 .tiptap-editor img {
@@ -464,7 +418,6 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  font-family: 'Inter', sans-serif;
 }
 
 .zen-mode-header {
@@ -497,7 +450,6 @@
 .zen-exit-icon {
   width: 20px;
   height: 20px;
-  color: #6b7280;
 }
 
 .zen-mode-content {
@@ -526,9 +478,7 @@
   padding: 60px;
   border: none;
   outline: none;
-  font-size: 18px;
   line-height: 1.7;
-  color: #111827;
   background: white;
   
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -548,29 +498,19 @@
 }
 
 .zen-editor h1 {
-  font-size: 2.5em;
-  font-weight: 700;
   margin: 1em 0 0.5em 0;
-  color: #111827;
 }
 
 .zen-editor h2 {
-  font-size: 2em;
-  font-weight: 600;
   margin: 1em 0 0.5em 0;
-  color: #111827;
 }
 
 .zen-editor h3 {
-  font-size: 1.5em;
-  font-weight: 600;
   margin: 1em 0 0.5em 0;
-  color: #111827;
 }
 
 .zen-editor p {
   margin: 1em 0;
-  font-size: 18px;
   line-height: 1.7;
 }
 
@@ -595,16 +535,13 @@
   border-radius: 4px;
   padding: 3px 6px;
   font-family: 'Monaco', 'Consolas', monospace;
-  font-size: 0.9em;
 }
 
 .zen-editor blockquote {
   border-left: 4px solid #e5e7eb;
   margin: 1.5em 0;
   padding-left: 1.5em;
-  color: #6b7280;
   font-style: italic;
-  font-size: 18px;
 }
 
 .zen-editor ul,
@@ -615,18 +552,12 @@
 
 .zen-editor li {
   margin: 0.5em 0;
-  font-size: 18px;
   line-height: 1.7;
 }
 
 .zen-editor a {
-  color: #2563eb;
   text-decoration: underline;
   cursor: pointer;
-}
-
-.zen-editor a:hover {
-  color: #1d4ed8;
 }
 
 .zen-editor img {
@@ -682,12 +613,6 @@
 
   .zen-editor {
     padding: 40px;
-    font-size: 17px;
-  }
-
-  .zen-editor p,
-  .zen-editor li {
-    font-size: 17px;
   }
 }
 
@@ -721,27 +646,5 @@
 
   .zen-editor {
     padding: 24px;
-    font-size: 16px;
-  }
-
-  .zen-editor p,
-  .zen-editor li {
-    font-size: 16px;
-  }
-
-  .zen-editor h1 {
-    font-size: 2em;
-  }
-
-  .zen-editor h2 {
-    font-size: 1.75em;
-  }
-
-  .zen-editor h3 {
-    font-size: 1.25em;
-  }
-
-  .zen-editor blockquote {
-    font-size: 16px;
   }
 }

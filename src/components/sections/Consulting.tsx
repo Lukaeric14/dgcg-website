@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import davidImage from '../../assets/david.png';
-import logoImage from '../../assets/iconlong.png';
 
 function Consulting() {
   const [showManifesto, setShowManifesto] = useState(false);
@@ -45,30 +44,7 @@ function Consulting() {
         alt="David"
       />
       
-      {/* Navigation */}
-      <nav className="main-nav">
-        <div className="logo-container">
-          <img 
-            src={logoImage} 
-            alt="DGCG Logo" 
-            style={{ height: '40px', width: 'auto' }}
-          />
-        </div>
-        
-        <div className="nav-links">
-          <button className="nav-link" onClick={handleManifestoClick}>
-            Our Manifesto
-          </button>
-          <a 
-            href="https://www.linkedin.com/company/dgcg/about/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="nav-link"
-          >
-            Socials
-          </a>
-        </div>
-      </nav>
+
       
       {/* Main Content */}
       <div className="content-container">

@@ -1,8 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 .newsletter-manager {
   padding: 24px;
-  font-family: 'Inter', sans-serif;
 }
 
 .newsletter-header {
@@ -13,9 +10,6 @@
 }
 
 .newsletter-title {
-  font-size: 24px;
-  font-weight: 600;
-  color: #111827;
   margin: 0;
 }
 
@@ -24,11 +18,9 @@
   align-items: center;
   gap: 8px;
   background-color: #1f2937;
-  color: white;
   border: none;
   padding: 8px 16px;
   border-radius: 6px;
-  font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -47,8 +39,6 @@
   justify-content: center;
   align-items: center;
   height: 200px;
-  color: #6b7280;
-  font-size: 16px;
 }
 
 .newsletter-filters {
@@ -80,14 +70,10 @@
 }
 
 .newsletter-title {
-  font-weight: 500;
-  color: #111827;
   line-height: 1.2;
 }
 
 .newsletter-subject {
-  font-size: 14px;
-  color: #6b7280;
   line-height: 1.3;
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -99,48 +85,38 @@
   display: inline-block;
   padding: 4px 8px;
   border-radius: 4px;
-  font-size: 12px;
-  font-weight: 500;
   text-transform: capitalize;
 }
 
 .newsletter-status-draft {
   background-color: #f3f4f6;
-  color: #374151;
 }
 
 .newsletter-status-scheduled {
   background-color: #fef3c7;
-  color: #92400e;
 }
 
 .newsletter-status-sent {
   background-color: #dcfce7;
-  color: #166534;
 }
 
 .newsletter-status-cancelled {
   background-color: #fef2f2;
-  color: #dc2626;
 }
 
 .newsletter-access {
   display: inline-block;
   padding: 4px 8px;
   border-radius: 4px;
-  font-size: 12px;
-  font-weight: 500;
   text-transform: capitalize;
 }
 
 .newsletter-access-free {
   background-color: #dbeafe;
-  color: #1e40af;
 }
 
 .newsletter-access-paid {
   background-color: #fdf4ff;
-  color: #7c3aed;
 }
 
 .newsletter-actions {
@@ -177,20 +153,10 @@
 .action-icon {
   width: 14px;
   height: 14px;
-  color: #6b7280;
-}
-
-.send-button:hover .action-icon {
-  color: #10b981;
-}
-
-.delete-button:hover .action-icon {
-  color: #dc2626;
 }
 
 .no-newsletters {
   text-align: center;
-  color: #6b7280;
   font-style: italic;
   padding: 40px 0;
 }

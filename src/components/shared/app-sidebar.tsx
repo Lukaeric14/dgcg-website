@@ -16,10 +16,10 @@ import {
   UsersIcon,
 } from "lucide-react"
 
-import { NavDocuments } from "./nav-documents"
-import { NavMain } from "./nav-main"
-import { NavSecondary } from "./nav-secondary"
-import { NavUser } from "./nav-user"
+import { AdminNavDocuments } from "./admin-nav-documents"
+import { AdminNavMain } from "./admin-nav-main"
+import { AdminNavSecondary } from "./admin-nav-secondary"
+import { AdminNavUser } from "./admin-nav-user"
 import {
   Sidebar,
   SidebarContent,
@@ -200,16 +200,16 @@ export function AppSidebar({
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
-        <NavSecondary 
+        <AdminNavMain items={data.navMain} />
+        <AdminNavDocuments items={data.documents} />
+        <AdminNavSecondary 
           items={data.navSecondary} 
           className="mt-auto"
           onSettingsClick={onSettingsClick}
         />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser 
+        <AdminNavUser 
           user={userData} 
           onAccountClick={onAccountClick}
           onBillingClick={onBillingClick}

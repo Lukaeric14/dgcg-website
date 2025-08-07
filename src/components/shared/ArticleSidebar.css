@@ -49,7 +49,6 @@
 .article-sidebar-title {
     align-self: stretch;
     margin-top: -1px;
-    text-shadow: 0px 4.94px 10.58px #0000000d;
     transition: color 0.2s, text-shadow 0.2s;
     cursor: pointer;
 }
@@ -70,9 +69,8 @@
 }
 
 .article-sidebar-avatar-fallback {
-    background-color: #374151;
-    color: white;
-    font-size: 0.75rem;
+  background-color: #374151;
+  color: white;
 }
 
 .article-sidebar-author-name-container {
@@ -86,14 +84,13 @@
 .article-sidebar-author-name {
     align-self: stretch;
     margin-top: -1px;
-    text-shadow: 0px 4.94px 10.58px #0000000d;
 }
 
 /* Mobile responsive styles */
 @media (max-width: 768px) {
     .article-sidebar {
         width: 100%;
-        padding: 0 16px; /* Add side margins */
+        padding: 0 16px;
     }
     
     .article-sidebar-card {
@@ -108,7 +105,7 @@
     .article-sidebar-image {
         width: 80px;
         height: 80px;
-        min-width: 80px; /* Prevent shrinking */
+        min-width: 80px;
     }
     
     .article-sidebar-info {
@@ -123,9 +120,7 @@
     }
     
     .article-sidebar-title {
-        font-size: 20px; /* Increased from 16px */
-        line-height: 1.4; /* Increased line height for better readability */
-        /* Prevent text from going edge to edge */
+        line-height: 1.4;
         word-wrap: break-word;
         overflow-wrap: break-word;
     }
@@ -143,15 +138,11 @@
         width: auto;
         gap: 4px;
     }
-    
-    .article-sidebar-author-name {
-        font-size: 16px; /* Increased from 14px */
-    }
 }
 
 @media (max-width: 480px) {
     .article-sidebar {
-        padding: 0 12px; /* Smaller margins on very small screens */
+        padding: 0 12px;
     }
     
     .article-sidebar-card-content {
@@ -165,11 +156,6 @@
     }
     
     .article-sidebar-title {
-        font-size: 16px; /* Increased from 14px */
         line-height: 1.3;
-    }
-    
-    .article-sidebar-author-name {
-        font-size: 14px; /* Increased from 12px */
     }
 }

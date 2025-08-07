@@ -6,14 +6,7 @@ import david from '../../assets/david.png';
 import quillbotLogo from '../../assets/quillbot.png';
 import './ArticlePageV2.css';
 
-// SVG Logo Icon (extracted from Figma)
-const LogoIcon: React.FC = () => (
-  <svg width="27" height="33" viewBox="0 0 27 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M13.5 0L0 8.25V24.75L13.5 33L27 24.75V8.25L13.5 0Z" fill="white"/>
-    <path d="M13.5 4.125L4.5 9.5625V23.4375L13.5 28.875L22.5 23.4375V9.5625L13.5 4.125Z" fill="#171717"/>
-    <text x="13.5" y="19" textAnchor="middle" fill="white" fontSize="8" fontFamily="serif">D</text>
-  </svg>
-);
+
 
 interface Article {
   id: string;
@@ -172,28 +165,6 @@ In a groundbreaking development, the world of artificial intelligence is witness
 
   return (
     <div className="article-page-v2">
-      {/* Navigation */}
-      <nav className="article-nav">
-        <div className="nav-content">
-          {/* Logo */}
-          <div className="logo-container">
-            <div className="logo-icon">
-              <LogoIcon />
-            </div>
-            <div className="logo-text text-cormorant-h1 text-white-full letter-spacing-wide">
-              DGCG
-            </div>
-          </div>
-          
-          {/* Navigation Links */}
-          <div className="nav-links">
-            <a href="/manifesto" className="nav-link text-cormorant-body text-white">Our Manifesto</a>
-            <a href="/socials" className="nav-link text-cormorant-body text-white">Socials</a>
-            <a href="/login" className="nav-link text-cormorant-body text-white">Login</a>
-          </div>
-        </div>
-      </nav>
-
       {/* Main Content */}
       <main className="article-main">
         <div className="article-container">

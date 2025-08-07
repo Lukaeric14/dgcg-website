@@ -117,14 +117,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // Show loading spinner while checking auth state
   if (loading) {
     return (
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        backgroundColor: '#1a1a1a',
-        color: 'white'
-      }}>
+      <div className="auth-loading">
         <div>Loading...</div>
       </div>
     );

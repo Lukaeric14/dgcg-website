@@ -1,9 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 .notes-manager {
   height: 100vh;
   display: flex;
-  font-family: 'Inter', sans-serif;
   background-color: #f8fafc;
 }
 
@@ -14,13 +11,11 @@
   align-items: center;
   height: 100vh;
   gap: 16px;
-  color: #6b7280;
 }
 
 .loading-icon {
   width: 48px;
   height: 48px;
-  color: #9ca3af;
 }
 
 /* Sidebar Styles */
@@ -50,16 +45,12 @@
 }
 
 .notes-sidebar-title h2 {
-  font-size: 20px;
-  font-weight: 600;
-  color: #111827;
   margin: 0;
 }
 
 .notes-icon {
   width: 24px;
   height: 24px;
-  color: #6b7280;
 }
 
 .new-note-button {
@@ -82,7 +73,6 @@
 .plus-icon {
   width: 18px;
   height: 18px;
-  color: white;
 }
 
 /* Search Styles */
@@ -102,7 +92,6 @@
   left: 12px;
   width: 16px;
   height: 16px;
-  color: #9ca3af;
   z-index: 1;
 }
 
@@ -110,7 +99,6 @@
   padding-left: 40px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
-  font-size: 14px;
   transition: border-color 0.2s;
   background: #f9fafb;
 }
@@ -154,9 +142,6 @@
 }
 
 .note-item-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: #111827;
   margin: 0;
   line-height: 1.4;
   flex: 1;
@@ -164,15 +149,10 @@
 }
 
 .note-item-date {
-  font-size: 12px;
-  color: #6b7280;
   flex-shrink: 0;
-  font-weight: 500;
 }
 
 .note-item-preview {
-  font-size: 13px;
-  color: #6b7280;
   line-height: 1.4;
   margin: 0 0 12px 0;
   overflow: hidden;
@@ -188,19 +168,14 @@
 }
 
 .note-tag {
-  font-size: 11px;
   padding: 2px 6px;
   background-color: #f3f4f6;
-  color: #374151;
   border: none;
-  font-weight: 500;
 }
 
 .note-tag-more {
-  font-size: 11px;
   padding: 2px 6px;
   background-color: transparent;
-  color: #6b7280;
   border: 1px solid #e5e7eb;
 }
 
@@ -211,19 +186,16 @@
   justify-content: center;
   padding: 60px 20px;
   text-align: center;
-  color: #6b7280;
 }
 
 .no-notes-icon {
   width: 48px;
   height: 48px;
-  color: #d1d5db;
   margin-bottom: 16px;
 }
 
 .no-notes p {
   margin: 8px 0 16px 0;
-  font-size: 15px;
 }
 
 /* Content Area Styles */
@@ -255,11 +227,9 @@
   align-items: center;
   gap: 8px;
   background-color: #2563eb;
-  color: white;
   border: none;
   padding: 8px 16px;
   border-radius: 6px;
-  font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -277,11 +247,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #dc2626;
   border: 1px solid #e5e7eb;
   padding: 8px 16px;
   border-radius: 6px;
-  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -304,11 +272,9 @@
   align-items: center;
   gap: 8px;
   background-color: #059669;
-  color: white;
   border: none;
   padding: 8px 16px;
   border-radius: 6px;
-  font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -321,11 +287,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #6b7280;
   border: 1px solid #e5e7eb;
   padding: 8px 16px;
   border-radius: 6px;
-  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -341,9 +305,6 @@
 }
 
 .note-view-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #111827;
   margin: 0 0 8px 0;
   line-height: 1.2;
 }
@@ -359,8 +320,6 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 14px;
-  color: #6b7280;
 }
 
 .meta-icon {
@@ -369,14 +328,11 @@
 }
 
 .note-url-link {
-  color: #2563eb;
   text-decoration: none;
-  font-weight: 500;
   transition: color 0.2s;
 }
 
 .note-url-link:hover {
-  color: #1d4ed8;
   text-decoration: underline;
 }
 
@@ -397,22 +353,17 @@
 
 .note-view-tag {
   background-color: #eff6ff;
-  color: #1d4ed8;
   border: 1px solid #bfdbfe;
   padding: 4px 10px;
   border-radius: 6px;
-  font-size: 13px;
-  font-weight: 500;
 }
 
 .note-view-body {
   line-height: 1.7;
-  color: #374151;
 }
 
 .note-paragraph {
   margin: 0 0 16px 0;
-  font-size: 16px;
   line-height: 1.7;
 }
 
@@ -437,8 +388,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
-  color: #6b7280;
 }
 
 .saving-spinner {
@@ -456,19 +405,14 @@
 }
 
 .saved-indicator {
-  font-size: 14px;
-  color: #059669;
   font-weight: 500;
 }
 
 /* Large Title Input */
 .title-input-large {
-  font-size: 28px;
-  font-weight: 700;
   border: none;
   padding: 0;
   background: transparent;
-  color: #111827;
   line-height: 1.2;
   margin-bottom: 16px;
 }
@@ -480,7 +424,6 @@
 }
 
 .title-input-large::placeholder {
-  color: #d1d5db;
   font-weight: 600;
 }
 
@@ -520,7 +463,6 @@
 .url-icon {
   width: 16px;
   height: 16px;
-  color: #9ca3af;
   flex-shrink: 0;
 }
 
@@ -528,7 +470,6 @@
   border: none;
   background: transparent;
   padding: 0;
-  font-size: 14px;
   flex: 1;
 }
 
@@ -565,7 +506,6 @@
 .tag-icon-inline {
   width: 16px;
   height: 16px;
-  color: #9ca3af;
   flex-shrink: 0;
 }
 
@@ -573,7 +513,6 @@
   border: none;
   background: transparent;
   padding: 0;
-  font-size: 14px;
   flex: 1;
 }
 
@@ -595,12 +534,9 @@
   align-items: center;
   gap: 6px;
   background-color: #eff6ff;
-  color: #1d4ed8;
   border: 1px solid #bfdbfe;
   padding: 4px 8px;
   border-radius: 6px;
-  font-size: 13px;
-  font-weight: 500;
 }
 
 .body-field {
@@ -611,12 +547,9 @@
   border: none;
   padding: 0;
   background: transparent;
-  font-size: 16px;
   line-height: 1.6;
   resize: none;
-  color: #374151;
   min-height: 400px;
-  font-family: 'Inter', sans-serif;
 }
 
 .body-textarea-large:focus {
@@ -626,7 +559,6 @@
 }
 
 .body-textarea-large::placeholder {
-  color: #d1d5db;
   font-style: normal;
 }
 
@@ -647,14 +579,10 @@
 }
 
 .form-field label {
-  font-weight: 500;
-  color: #374151;
   font-size: 14px;
 }
 
 .title-input {
-  font-size: 16px;
-  font-weight: 600;
   border: 1px solid #d1d5db;
   border-radius: 6px;
   padding: 12px;
@@ -678,7 +606,6 @@
   border: 1px solid #d1d5db;
   border-radius: 6px;
   padding: 8px 12px;
-  font-size: 14px;
   transition: border-color 0.2s;
 }
 
@@ -729,7 +656,6 @@
   border: 1px solid #d1d5db;
   border-radius: 6px;
   padding: 8px 12px;
-  font-size: 14px;
   transition: border-color 0.2s;
 }
 
@@ -771,12 +697,9 @@
   align-items: center;
   gap: 6px;
   background-color: #eff6ff;
-  color: #1d4ed8;
   border: 1px solid #bfdbfe;
   padding: 4px 8px;
   border-radius: 6px;
-  font-size: 13px;
-  font-weight: 500;
 }
 
 .remove-tag-button {
@@ -787,7 +710,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #6b7280;
   transition: color 0.2s;
 }
 
@@ -805,10 +727,8 @@
   border: 1px solid #d1d5db;
   border-radius: 6px;
   padding: 12px;
-  font-size: 14px;
   line-height: 1.6;
   resize: vertical;
-  font-family: 'Inter', sans-serif;
   transition: border-color 0.2s;
 }
 
@@ -827,25 +747,19 @@
   justify-content: center;
   padding: 60px 40px;
   text-align: center;
-  color: #6b7280;
 }
 
 .empty-state-icon {
   width: 64px;
   height: 64px;
-  color: #d1d5db;
   margin-bottom: 24px;
 }
 
 .notes-empty-state h3 {
-  font-size: 20px;
-  font-weight: 600;
-  color: #111827;
   margin: 0 0 8px 0;
 }
 
 .notes-empty-state p {
-  font-size: 15px;
   margin: 0 0 24px 0;
   line-height: 1.5;
 }
@@ -855,11 +769,9 @@
   align-items: center;
   gap: 8px;
   background-color: #2563eb;
-  color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 8px;
-  font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -922,7 +834,6 @@
   .save-button,
   .delete-button {
     padding: 6px 12px;
-    font-size: 13px;
   }
 }
 

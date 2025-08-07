@@ -24,50 +24,6 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
-    
-    /* Cormorant Garamond Font Variables */
-    --cormorant-body-font-family: "Cormorant Garamond", Helvetica;
-    --cormorant-body-font-size: 20px;
-    --cormorant-body-font-style: normal;
-    --cormorant-body-font-weight: 400;
-    --cormorant-body-letter-spacing: 0.2px;
-    --cormorant-body-line-height: 120.00000476837158%;
-    --cormorant-display-font-family: "Cormorant Garamond", Helvetica;
-    --cormorant-display-font-size: 64px;
-    --cormorant-display-font-style: normal;
-    --cormorant-display-font-weight: 700;
-    --cormorant-display-letter-spacing: -1.28px;
-    --cormorant-display-line-height: 120.00000476837158%;
-    --cormorant-h1-font-family: "Cormorant Garamond", Helvetica;
-    --cormorant-h1-font-size: 40px;
-    --cormorant-h1-font-style: normal;
-    --cormorant-h1-font-weight: 600;
-    --cormorant-h1-letter-spacing: -0.8px;
-    --cormorant-h1-line-height: 120.00000476837158%;
-    --cormorant-h2-font-family: "Cormorant Garamond", Helvetica;
-    --cormorant-h2-font-size: 28px;
-    --cormorant-h2-font-style: normal;
-    --cormorant-h2-font-weight: 600;
-    --cormorant-h2-letter-spacing: -0.56px;
-    --cormorant-h2-line-height: 120.00000476837158%;
-    --palatino-body-font-family: "Palatino", Helvetica;
-    --palatino-body-font-size: 20px;
-    --palatino-body-font-style: normal;
-    --palatino-body-font-weight: 400;
-    --palatino-body-letter-spacing: -0.2px;
-    --palatino-body-line-height: 120.00000476837158%;
-    --palatino-h2-title-font-family: "Palatino", Helvetica;
-    --palatino-h2-title-font-size: 28px;
-    --palatino-h2-title-font-style: normal;
-    --palatino-h2-title-font-weight: 700;
-    --palatino-h2-title-letter-spacing: -0.56px;
-    --palatino-h2-title-line-height: 120.00000476837158%;
-    --palatino-h3-font-family: "Cormorant Garamond", Helvetica;
-    --palatino-h3-font-size: 24px;
-    --palatino-h3-font-style: normal;
-    --palatino-h3-font-weight: 500;
-    --palatino-h3-letter-spacing: -0.48px;
-    --palatino-h3-line-height: 120.00000476837158%;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -118,35 +74,21 @@
   }
 }
 
-/* Design System - Text Styles */
-/* All text on the webpage must follow these styles */
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Palatino:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* Palatino Font Family */
-@import url('https://fonts.googleapis.com/css2?family=Palatino:wght@400;600&display=swap');
+/* Global Typography System - Public Website */
+/* All text styling for the public website should use these classes */
 
-/* Cormorant Font Family */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap');
-
-/* Base Text Styles */
-.text-palatino-h2-title {
-  font-family: 'Palatino', serif;
-  font-size: 28px;
-  line-height: 120%;
-  font-weight: 600;
-}
-
-.text-palatino-body {
-  font-family: 'Palatino', serif;
-  font-size: 20px;
-  line-height: 120%;
-  font-weight: 400;
-}
-
+/* Cormorant Garamond Font Family */
 .text-cormorant-display {
   font-family: 'Cormorant Garamond', serif;
   font-size: 64px;
   line-height: 120%;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: -1.28px;
 }
 
 .text-cormorant-h1 {
@@ -154,6 +96,7 @@
   font-size: 40px;
   line-height: 120%;
   font-weight: 600;
+  letter-spacing: -0.8px;
 }
 
 .text-cormorant-h2 {
@@ -161,6 +104,15 @@
   font-size: 28px;
   line-height: 120%;
   font-weight: 600;
+  letter-spacing: -0.56px;
+}
+
+.text-cormorant-h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  line-height: 120%;
+  font-weight: 500;
+  letter-spacing: -0.48px;
 }
 
 .text-cormorant-body {
@@ -168,6 +120,32 @@
   font-size: 20px;
   line-height: 120%;
   font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+.text-cormorant-small {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  line-height: 120%;
+  font-weight: 400;
+  letter-spacing: -0.18px;
+}
+
+/* Palatino Font Family */
+.text-palatino-h2-title {
+  font-family: 'Palatino', serif;
+  font-size: 28px;
+  line-height: 120%;
+  font-weight: 700;
+  letter-spacing: -0.56px;
+}
+
+.text-palatino-body {
+  font-family: 'Palatino', serif;
+  font-size: 20px;
+  line-height: 120%;
+  font-weight: 400;
+  letter-spacing: -0.2px;
 }
 
 .text-palatino-h3 {
@@ -175,9 +153,10 @@
   font-size: 24px;
   line-height: 120%;
   font-weight: 600;
+  letter-spacing: -0.48px;
 }
 
-/* Utility classes for common text colors */
+/* Global Color System */
 .text-white {
   color: rgba(255, 255, 255, 0.9);
 }
@@ -194,7 +173,7 @@
   color: #6b7280;
 }
 
-/* Utility classes for text alignment */
+/* Global Text Alignment */
 .text-center {
   text-align: center;
 }
@@ -207,7 +186,7 @@
   text-align: justify;
 }
 
-/* Utility classes for letter spacing */
+/* Global Letter Spacing */
 .letter-spacing-tight {
   letter-spacing: -0.18px;
 }
@@ -218,4 +197,78 @@
 
 .letter-spacing-wide {
   letter-spacing: -0.8px;
+}
+
+/* Global Text Shadow */
+.text-shadow {
+  text-shadow: 0px 4.937px 10.579px rgba(0,0,0,0.05), 0px 18.337px 18.337px rgba(0,0,0,0.05), 0px 41.611px 25.389px rgba(0,0,0,0.03), 0px 74.758px 29.621px rgba(0,0,0,0.01), 0px 116.368px 32.442px rgba(0,0,0,0);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .text-cormorant-display {
+    font-size: 48px;
+  }
+  
+  .text-cormorant-h1 {
+    font-size: 32px;
+  }
+  
+  .text-cormorant-h2 {
+    font-size: 24px;
+  }
+  
+  .text-cormorant-h3 {
+    font-size: 20px;
+  }
+  
+  .text-cormorant-body {
+    font-size: 18px;
+  }
+  
+  .text-palatino-h2-title {
+    font-size: 24px;
+  }
+  
+  .text-palatino-body {
+    font-size: 18px;
+  }
+  
+  .text-palatino-h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-cormorant-display {
+    font-size: 36px;
+  }
+  
+  .text-cormorant-h1 {
+    font-size: 28px;
+  }
+  
+  .text-cormorant-h2 {
+    font-size: 20px;
+  }
+  
+  .text-cormorant-h3 {
+    font-size: 18px;
+  }
+  
+  .text-cormorant-body {
+    font-size: 16px;
+  }
+  
+  .text-palatino-h2-title {
+    font-size: 20px;
+  }
+  
+  .text-palatino-body {
+    font-size: 16px;
+  }
+  
+  .text-palatino-h3 {
+    font-size: 18px;
+  }
 }

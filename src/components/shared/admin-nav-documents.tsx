@@ -23,7 +23,7 @@ import {
   useSidebar,
 } from "../ui/sidebar"
 
-export function NavDocuments({
+export function AdminNavDocuments({
   items,
 }: {
   items: {
@@ -82,4 +82,4 @@ export function NavDocuments({
       </SidebarMenu>
     </SidebarGroup>
   )
-}
+} 

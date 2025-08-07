@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 .subscribers-manager {
   padding: 24px;
 }
@@ -36,16 +34,14 @@
 .subscribers-stat-icon {
   width: 20px;
   height: 20px;
-  color: #6b7280;
   margin-bottom: 4px;
 }
 
 .subscribers-stat-number {
-  color: #111827;
+  line-height: 1.2;
 }
 
 .subscribers-stat-label {
-  color: #6b7280;
   text-transform: uppercase;
 }
 
@@ -54,8 +50,6 @@
   justify-content: center;
   align-items: center;
   height: 200px;
-  color: #6b7280;
-  font-size: 16px;
 }
 
 .subscribers-filters {
@@ -78,7 +72,6 @@
   transform: translateY(-50%);
   width: 16px;
   height: 16px;
-  color: #6b7280;
   z-index: 1;
 }
 
@@ -86,7 +79,6 @@
   padding-left: 40px;
   border: 1px solid #d1d5db;
   border-radius: 6px;
-  font-size: 14px;
 }
 
 .subscribers-filter-select {
@@ -116,12 +108,10 @@
 }
 
 .subscriber-email {
-  color: #111827;
   line-height: 1.2;
 }
 
 .subscriber-id {
-  color: #6b7280;
   font-family: 'Monaco', 'Consolas', monospace;
 }
 
@@ -129,49 +119,47 @@
   display: inline-block;
   padding: 4px 8px;
   border-radius: 4px;
-  font-size: 12px;
-  font-weight: 500;
   text-transform: capitalize;
 }
 
 .subscriber-type-free {
   background-color: #dcfce7;
-  color: #166534;
 }
 
 .subscriber-type-paid {
   background-color: #fef3c7;
-  color: #92400e;
 }
 
 .subscriber-type-admin {
   background-color: #e0e7ff;
-  color: #3730a3;
 }
 
 .status-badge {
   display: inline-block;
   padding: 4px 8px;
   border-radius: 4px;
-  font-size: 12px;
-  font-weight: 500;
 }
 
 .status-confirmed {
   background-color: #dcfce7;
-  color: #166534;
 }
 
 .status-unconfirmed {
   background-color: #fef2f2;
-  color: #dc2626;
 }
 
 .no-subscribers {
   text-align: center;
-  color: #6b7280;
   font-style: italic;
   padding: 40px 0;
+}
+
+.subscribers-inline-message {
+  margin-top: 8px;
+}
+
+.actions-column {
+  width: 140px;
 }
 
 /* Responsive Design */
@@ -208,10 +196,6 @@
   .subscribers-stat-item {
     padding: 8px 12px;
     min-width: 60px;
-  }
-  
-  .subscribers-stat-number {
-    font-size: 18px;
   }
   
   .subscribers-table-container {

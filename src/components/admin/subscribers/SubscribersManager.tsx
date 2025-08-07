@@ -263,7 +263,7 @@ const SubscribersManager: React.FC = () => {
                       ? (
                         <div>
                           <div>No subscribers found in the database.</div>
-                          <div style={{ marginTop: '8px', fontSize: '14px', color: '#6b7280' }}>
+                          <div className="subscribers-inline-message text-admin-small text-gray">
                             This might mean user profiles aren't being created automatically. 
                             Check the browser console for more details.
                           </div>
