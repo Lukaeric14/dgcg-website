@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { getUserInitials } from '../../lib/utils';
+// import { getUserInitials } from '../lib/utils'; // Future use for fallback avatars
 import david from '../../assets/david.png';
 import quillbotLogo from '../../assets/quillbot.png';
 import './ArticlePage.css';
 
+
+
 interface Article {
   id: string;
   title: string;
+  abstract: string;
   body: string;
   image: string | null;
   created_at: string;
-  abstract: string;
-  ai_generated_percent: number;
-  ai_generated_ai_refined_percent: number;
-  human_written_ai_refined_percent: number;
-  human_written_percent: number;
   author_id: string;
   author?: {
     id: string;
@@ -25,127 +22,79 @@ interface Article {
     full_name: string;
     avatar_url: string;
   };
+  ai_generated_percent: number;
+  ai_generated_ai_refined_percent: number;
+  human_written_ai_refined_percent: number;
+  human_written_percent: number;
 }
-
-// Mobile-specific component
-const ArticlePageMobile: React.FC<{ article: Article }> = ({ article }) => {
-  const formattedDate = new Date(article.created_at).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-
-  return (
-    <div className="article-page-mobile">
-      <div className="mobile-main-container">
-        {/* Title First */}
-        <h1 className="mobile-article-title">{article.title}</h1>
-        
-        {/* Image */}
-        {article.image && (
-          <img src={article.image} alt={article.title} className="mobile-article-image" />
-        )}
-        
-        {/* Sidebar Content */}
-        <div className="mobile-sidebar-content">
-          {/* Abstract */}
-          <div className="mobile-abstract-section">
-            <h3 className="mobile-abstract-title">Abstract</h3>
-            <p className="mobile-abstract-text">{article.abstract}</p>
-          </div>
-          
-          {/* Attribution */}
-          <div className="mobile-attribution-section">
-            <div className="mobile-generation-stats">
-              <div className="mobile-stat-item">
-                <span>AI-generated</span>
-                <div className="mobile-stat-value">
-                  <div className="mobile-stat-color-box orange"></div>
-                  <span>{article.ai_generated_percent}%</span>
-                </div>
-              </div>
-              <div className="mobile-stat-item">
-                <span>AI-generated & AI-refined</span>
-                <div className="mobile-stat-value">
-                  <div className="mobile-stat-color-box light-orange"></div>
-                  <span>{article.ai_generated_ai_refined_percent}%</span>
-                </div>
-              </div>
-              <div className="mobile-stat-item">
-                <span>Human-written & AI-refined</span>
-                <div className="mobile-stat-value">
-                  <div className="mobile-stat-color-box light-blue"></div>
-                  <span>{article.human_written_ai_refined_percent}%</span>
-                </div>
-              </div>
-              <div className="mobile-stat-item">
-                <span>Human-written</span>
-                <div className="mobile-stat-value">
-                  <div className="mobile-stat-color-box white"></div>
-                  <span>{article.human_written_percent}%</span>
-                </div>
-              </div>
-            </div>
-            
-            {/* Author and Quillbot */}
-            <div className="mobile-author-quillbot">
-              <div className="mobile-author-info">
-                <Avatar className="mobile-author-avatar">
-                  <AvatarImage 
-                    src={article.author?.avatar_url || david} 
-                    alt={article.author?.full_name || article.author?.email || "Author"} 
-                  />
-                  <AvatarFallback>
-                    {getUserInitials(article.author?.full_name || article.author?.email || "Author")}
-                  </AvatarFallback>
-                </Avatar>
-                <div className="mobile-author-details">
-                  <div className="mobile-author-name">
-                    {article.author?.full_name || article.author?.email || "Author"}
-                  </div>
-                  <div className="mobile-publication-date">{formattedDate}</div>
-                </div>
-              </div>
-              <div className="mobile-quillbot-attribution">
-                <span className="mobile-quillbot-text">By Quillbot</span>
-                <img src={quillbotLogo} alt="Quillbot Logo" className="mobile-quillbot-logo" />
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Article Body */}
-        <div 
-          className="mobile-article-body"
-          dangerouslySetInnerHTML={{ __html: article.body }}
-        />
-      </div>
-    </div>
-  );
-};
 
 const ArticlePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [article, setArticle] = useState<Article | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 600);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   useEffect(() => {
     const fetchArticle = async () => {
-      if (!id) return;
+      // If no ID is provided, use the first article or create sample data
+      if (!id) {
+        try {
+          setLoading(true);
+          const { data, error } = await supabase
+            .from('articles')
+            .select(`
+              *,
+              author:users_profiles(
+                id,
+                email,
+                full_name,
+                avatar_url
+              )
+            `)
+            .order('created_at', { ascending: false })
+            .limit(1)
+            .single();
 
+          if (error) {
+            throw error;
+          }
+
+          if (data) {
+            setArticle(data);
+          }
+        } catch (err) {
+          // If no articles exist, use sample data
+          console.warn('No articles found, using sample data:', err);
+          setArticle({
+            id: 'sample',
+            title: 'The Rise of David: A New Era in AI Innovation',
+            abstract: 'In a groundbreaking development, the world of artificial intelligence is witnessing a paradigm shift. Experts at Capital Group have unveiled a new AI model, dubbed "David", designed to tackle complex challenges in various sectors. This innovative technology promises to enhance decision-making processes and improve efficiency across industries.',
+            body: `In a groundbreaking development, the world of artificial intelligence is witnessing a paradigm shift. Experts at Capital Group have unveiled a new AI model, dubbed "David", designed to tackle complex challenges in various sectors. This innovative technology promises to enhance decision-making processes and improve efficiency across industries.
+
+Groundbreaking development, the world of artificial intelligence is witnessing a paradigm shift. Experts at Capital Group have unveiled a new AI model, dubbed "David", designed to tackle complex challenges in various sectors. This innovative technology promises to enhance decision-making processes and improve efficiency across industries. In a groundbreaking development, the world of artificial intelligence is witnessing a paradigm shift.
+
+In a groundbreaking development, the world of artificial intelligence is witnessing a paradigm shift. Experts at Capital Group have unveiled a new AI model, dubbed "David", designed to tackle complex challenges in various sectors. This innovative technology promises to enhance decision-making processes and improve efficiency across industries.`,
+            image: david,
+            created_at: '2025-07-31',
+            author_id: 'sample',
+            author: {
+              id: 'sample',
+              email: 'luka@dgcg.com',
+              full_name: 'Luka Erić',
+              avatar_url: david
+            },
+            ai_generated_percent: 0,
+            ai_generated_ai_refined_percent: 11,
+            human_written_ai_refined_percent: 43,
+            human_written_percent: 46
+          });
+        } finally {
+          setLoading(false);
+        }
+        return;
+      }
+
+      // Fetch specific article by ID
       try {
         setLoading(true);
         const { data, error } = await supabase
@@ -180,27 +129,34 @@ const ArticlePage: React.FC = () => {
   }, [id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="article-page">
+        <div className="loading-container">
+          <div className="loading-text text-cormorant-body text-white">Loading article...</div>
+        </div>
+      </div>
+    );
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div className="article-page">
+        <div className="error-container">
+          <div className="error-text text-cormorant-body text-white">Error: {error}</div>
+        </div>
+      </div>
+    );
   }
 
   if (!article) {
-    return <div>Article not found.</div>;
+    return (
+      <div className="article-page">
+        <div className="not-found-container">
+          <div className="not-found-text text-cormorant-body text-white">Article not found.</div>
+        </div>
+      </div>
+    );
   }
-
-  // Render mobile component if on mobile
-  if (isMobile) {
-    return <ArticlePageMobile article={article} />;
-  }
-
-  // Debug: Log article body content
-  console.log('Article body length:', article.body?.length);
-  console.log('Article body preview:', article.body?.substring(0, 200));
-  console.log('Article body full:', article.body);
-
   const formattedDate = new Date(article.created_at).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -208,73 +164,124 @@ const ArticlePage: React.FC = () => {
   });
 
   return (
-    
-    <div className="article-page-container">
-      <div className="article-sidebar-left">
-        <div className="author-info-left">
-          <Avatar className="author-avatar-left">
-            <AvatarImage 
-              src={article.author?.avatar_url || david} 
-              alt={article.author?.full_name || article.author?.email || "Author"} 
+    <div className="article-page">
+      {/* Main Content */}
+      <main className="article-main">
+        <div className="article-container">
+          {/* Article Title */}
+          <h1 className="article-title text-cormorant-h1 text-white-full text-center letter-spacing-wide">
+            {article.title}
+          </h1>
+
+          {/* Featured Image */}
+          {article.image && (
+            <div className="article-image">
+              <img src={article.image} alt={article.title} />
+            </div>
+          )}
+
+          {/* Sidebar Content */}
+          <div className="article-sidebar">
+            {/* Abstract */}
+            <div className="abstract-section">
+              <h2 className="abstract-title text-palatino-body text-white text-center letter-spacing-tight">
+                Abstract
+              </h2>
+              <p className="abstract-text text-palatino-body text-white text-justify letter-spacing-tight">
+                {article.abstract}
+              </p>
+            </div>
+
+            {/* AI Breakdown */}
+            <div className="ai-breakdown">
+              <div className="ai-breakdown-item">
+                <span className="ai-breakdown-label text-palatino-body text-white letter-spacing-tight">
+                  AI-generated
+                </span>
+                <div className="ai-breakdown-value">
+                  <div className="ai-breakdown-dot ai-generated"></div>
+                  <span className="ai-breakdown-percent text-palatino-body text-white letter-spacing-tight">
+                    {article.ai_generated_percent}%
+                  </span>
+                </div>
+              </div>
+
+              <div className="ai-breakdown-item">
+                <span className="ai-breakdown-label text-palatino-body text-white letter-spacing-tight">
+                  AI-generated & AI-refined
+                </span>
+                <div className="ai-breakdown-value">
+                  <div className="ai-breakdown-dot ai-generated-refined"></div>
+                  <span className="ai-breakdown-percent text-palatino-body text-white letter-spacing-tight">
+                    {article.ai_generated_ai_refined_percent}%
+                  </span>
+                </div>
+              </div>
+
+              <div className="ai-breakdown-item">
+                <span className="ai-breakdown-label text-palatino-body text-white letter-spacing-tight">
+                  Human-written & AI-refined
+                </span>
+                <div className="ai-breakdown-value">
+                  <div className="ai-breakdown-dot human-ai-refined"></div>
+                  <span className="ai-breakdown-percent text-palatino-body text-white letter-spacing-tight">
+                    {article.human_written_ai_refined_percent}%
+                  </span>
+                </div>
+              </div>
+
+              <div className="ai-breakdown-item">
+                <span className="ai-breakdown-label text-palatino-body text-white letter-spacing-tight">
+                  Human-written
+                </span>
+                <div className="ai-breakdown-value">
+                  <div className="ai-breakdown-dot human-written"></div>
+                  <span className="ai-breakdown-percent text-palatino-body text-white letter-spacing-tight">
+                    {article.human_written_percent}%
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Attribution */}
+            <div className="attribution-section">
+              <div className="author-info">
+                <div className="author-avatar">
+                  <img 
+                    src={article.author?.avatar_url || david} 
+                    alt={article.author?.full_name || 'Author'} 
+                  />
+                </div>
+                <div className="author-details">
+                  <div className="author-name text-cormorant-body text-white-full letter-spacing-normal">
+                    {article.author?.full_name || article.author?.email || 'Author'}
+                  </div>
+                  <div className="publication-date text-cormorant-body text-white letter-spacing-normal">
+                    {formattedDate}
+                  </div>
+                </div>
+              </div>
+              
+              <div className="quillbot-attribution">
+                <span className="quillbot-text text-cormorant-body text-white letter-spacing-normal">
+                  By Quillbot
+                </span>
+                <div className="quillbot-logo">
+                  <img src={quillbotLogo} alt="Quillbot Logo" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Article Body */}
+          <div className="article-body">
+            <div 
+              className="article-content text-palatino-body text-white text-justify letter-spacing-tight"
+              dangerouslySetInnerHTML={{ __html: article.body }}
             />
-            <AvatarFallback>
-              {getUserInitials(article.author?.full_name || article.author?.email || "Author")}
-            </AvatarFallback>
-          </Avatar>
-          <div className="author-details-left">
-            <div className="author-name-left text-cormorant-h2 text-white-full">
-              {article.author?.full_name || article.author?.email || "Author"}
-            </div>
-            <div className="publication-date-left text-cormorant-body text-white letter-spacing-normal">{formattedDate}</div>
           </div>
         </div>
-        <div className="abstract-section">
-          <h3 className="abstract-title text-cormorant-body text-white text-center letter-spacing-tight">Abstract</h3>
-          <p className="abstract-text text-cormorant-body text-white text-justify letter-spacing-tight">{article.abstract}</p>
-        </div>
-        <div className="generation-stats">
-          <div className="article-stat-item">
-            <span className="text-palatino-body text-white letter-spacing-tight">AI-generated</span>
-            <div className="stat-value">
-              <div className="stat-color-box orange"></div>
-              <span className="text-palatino-body text-white letter-spacing-tight">{article.ai_generated_percent}%</span>
-            </div>
-          </div>
-          <div className="article-stat-item">
-            <span className="text-palatino-body text-white letter-spacing-tight">AI-generated & AI-refined</span>
-            <div className="stat-value">
-              <div className="stat-color-box light-orange"></div>
-              <span className="text-palatino-body text-white letter-spacing-tight">{article.ai_generated_ai_refined_percent}%</span>
-            </div>
-          </div>
-          <div className="article-stat-item">
-            <span className="text-palatino-body text-white letter-spacing-tight">Human-written & AI-refined</span>
-            <div className="stat-value">
-              <div className="stat-color-box light-blue"></div>
-              <span className="text-palatino-body text-white letter-spacing-tight">{article.human_written_ai_refined_percent}%</span>
-            </div>
-          </div>
-          <div className="article-stat-item">
-            <span className="text-palatino-body text-white letter-spacing-tight">Human-written</span>
-            <div className="stat-value">
-              <div className="stat-color-box white"></div>
-              <span className="text-palatino-body text-white letter-spacing-tight">{article.human_written_percent}%</span>
-            </div>
-          </div>
-        </div>
-        <div className="quillbot-attribution">
-          <span className="quillbot-text text-cormorant-body text-white letter-spacing-normal">By Quillbot</span>
-          <img src={quillbotLogo} alt="Quillbot Logo" className="quillbot-logo" />
-        </div>
-      </div>
-      <div className="article-main-content">
-        {article.image && <img src={article.image} alt={article.title} className="article-main-image" />}
-        <h1 className="article-title-main text-cormorant-h1 text-white-full letter-spacing-wide">{article.title}</h1>
-        <div 
-          className="article-body-main article-page-body text-cormorant-body text-white letter-spacing-tight"
-          dangerouslySetInnerHTML={{ __html: article.body }}
-        />
-      </div>
+      </main>
     </div>
   );
 };

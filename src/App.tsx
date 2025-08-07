@@ -8,7 +8,6 @@ import PricingPage from './components/pages/PricingPage';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
 import ArticlePage from './components/pages/ArticlePage';
-import ArticlePageV2 from './components/pages/ArticlePageV2';
 import AdminDashboard from './components/admin/dashboard/AdminDashboard';
 import Unsubscribe from './components/pages/Unsubscribe';
 import UnifiedNavBar from './components/shared/UnifiedNavBar';
@@ -72,8 +71,7 @@ function AppContent() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/article/:id" element={<ArticlePage />} />
-        <Route path="/article-v2/:id" element={<ArticlePageV2 />} />
-        <Route path="/article-v2" element={<ArticlePageV2 />} />
+        <Route path="/article" element={<ArticlePage />} />
         <Route path="/blog/pricing" element={<PricingPage />} />
         <Route path="/consulting" element={<Consulting />} />
         <Route path="/login" element={<Login />} />

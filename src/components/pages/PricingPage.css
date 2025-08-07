@@ -1,10 +1,22 @@
 .pricing-container {
   min-height: 100vh;
   background-color: oklch(0.2050 0 0);
-  padding: 40px 20px;
+  padding: 180px 20px 40px; /* Account for fixed navbar */
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .pricing-container {
+    padding-top: 120px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pricing-container {
+    padding-top: 100px;
+  }
 }
 
 .pricing-content {

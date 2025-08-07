@@ -1,9 +1,10 @@
 /* Article Page V2 - Mobile First Design */
-.article-page-v2 {
+.article-page {
   min-height: 100vh;
   background: oklch(0.2050 0 0);
   display: flex;
   flex-direction: column;
+  padding-top: 150px; /* Account for fixed navbar */
 }
 
 /* Loading, Error, and Not Found States */
@@ -53,7 +54,6 @@
   height: 600px;
   max-height: 600px;
   overflow: hidden;
-  border-radius: 8px;
 }
 
 .article-image img {
@@ -79,7 +79,8 @@
 }
 
 .abstract-text {
-  line-height: 1.2;
+  line-height: 1.6;
+  text-indent: 2.5em;
 }
 
 /* AI Breakdown */
@@ -194,6 +195,8 @@
 
 .article-content p {
   margin-bottom: 1em;
+  line-height: 1.6;
+  text-indent: 2.5em;
 }
 
 .article-content p:last-child {
@@ -201,9 +204,18 @@
 }
 
 /* Mobile First - Base styles are already mobile */
+@media (max-width: 600px) {
+  .article-page {
+    padding-top: 180px; /* More space for stacked navbar on mobile */
+  }
+}
 
 /* Tablet styles */
 @media (min-width: 768px) {
+  .article-page {
+    padding-top: 120px;
+  }
+
   .article-main {
     padding: 50px 40px;
   }
@@ -211,6 +223,10 @@
 
 /* Desktop styles */
 @media (min-width: 1024px) {
+  .article-page {
+    padding-top: 100px;
+  }
+
   .article-main {
     padding: 60px 60px;
   }

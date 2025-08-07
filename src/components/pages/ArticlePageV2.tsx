@@ -4,7 +4,7 @@ import { supabase } from '../../lib/supabase';
 // import { getUserInitials } from '../lib/utils'; // Future use for fallback avatars
 import david from '../../assets/david.png';
 import quillbotLogo from '../../assets/quillbot.png';
-import './ArticlePageV2.css';
+import './ArticlePage.css';
 
 
 
@@ -28,7 +28,7 @@ interface Article {
   human_written_percent: number;
 }
 
-const ArticlePageV2: React.FC = () => {
+const ArticlePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [article, setArticle] = useState<Article | null>(null);
   const [loading, setLoading] = useState(true);
@@ -130,7 +130,7 @@ In a groundbreaking development, the world of artificial intelligence is witness
 
   if (loading) {
     return (
-      <div className="article-page-v2">
+      <div className="article-page">
         <div className="loading-container">
           <div className="loading-text text-cormorant-body text-white">Loading article...</div>
         </div>
@@ -140,7 +140,7 @@ In a groundbreaking development, the world of artificial intelligence is witness
 
   if (error) {
     return (
-      <div className="article-page-v2">
+      <div className="article-page">
         <div className="error-container">
           <div className="error-text text-cormorant-body text-white">Error: {error}</div>
         </div>
@@ -150,7 +150,7 @@ In a groundbreaking development, the world of artificial intelligence is witness
 
   if (!article) {
     return (
-      <div className="article-page-v2">
+      <div className="article-page">
         <div className="not-found-container">
           <div className="not-found-text text-cormorant-body text-white">Article not found.</div>
         </div>
@@ -164,7 +164,7 @@ In a groundbreaking development, the world of artificial intelligence is witness
   });
 
   return (
-    <div className="article-page-v2">
+    <div className="article-page">
       {/* Main Content */}
       <main className="article-main">
         <div className="article-container">
@@ -184,9 +184,9 @@ In a groundbreaking development, the world of artificial intelligence is witness
           <div className="article-sidebar">
             {/* Abstract */}
             <div className="abstract-section">
-              <h3 className="abstract-title text-cormorant-body text-white text-center letter-spacing-tight">
+              <h2 className="abstract-title text-palatino-body text-white text-center letter-spacing-tight">
                 Abstract
-              </h3>
+              </h2>
               <p className="abstract-text text-palatino-body text-white text-justify letter-spacing-tight">
                 {article.abstract}
               </p>
@@ -286,4 +286,4 @@ In a groundbreaking development, the world of artificial intelligence is witness
   );
 };
 
-export default ArticlePageV2;
+export default ArticlePage;
