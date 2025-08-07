@@ -2,17 +2,16 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import { AuthProvider } from './contexts/AuthContext';
-import Consulting from './components/Consulting';
-import Home from './components/Home';
-import PricingPage from './components/PricingPage';
-import Login from './components/Login';
-import Register from './components/Register';
-import ArticlePage from './components/ArticlePage';
-import ArticlePageV2 from './components/ArticlePageV2';
-import AdminDashboard from './components/AdminDashboard';
-import Unsubscribe from './components/Unsubscribe';
+import Consulting from './components/sections/Consulting';
+import Home from './components/pages/Home';
+import PricingPage from './components/pages/PricingPage';
+import Login from './components/pages/Login';
+import Register from './components/pages/Register';
+import ArticlePage from './components/pages/ArticlePage';
+import ArticlePageV2 from './components/pages/ArticlePageV2';
+import AdminDashboard from './components/admin/dashboard/AdminDashboard';
+import Unsubscribe from './components/pages/Unsubscribe';
 import NavBar from './NavBar';
-import TestComponent from './components/TestComponent';
 
 // Error Boundary Component
 class ErrorBoundary extends React.Component<
@@ -58,7 +57,6 @@ function AppContent() {
       {!hideNav && <NavBar />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/test" element={<TestComponent />} />
         <Route path="/home" element={<Home />} />
         <Route path="/article/:id" element={<ArticlePage />} />
         <Route path="/article-v2/:id" element={<ArticlePageV2 />} />
