@@ -168,84 +168,131 @@ In a groundbreaking development, the world of artificial intelligence is witness
       {/* Main Content */}
       <main className="article-main">
         <div className="article-container">
-          {/* Article Title */}
-          <h1 className="article-title text-cormorant-h1 text-white-full text-center letter-spacing-wide">
-            {article.title}
-          </h1>
+          {/* EXISTING MOBILE/TABLET LAYOUT - UNCHANGED */}
+          <div className="article-mobile-container">
+            {/* Article Title */}
+            <h1 className="article-title text-cormorant-h1 text-white-full text-center letter-spacing-wide">
+              {article.title}
+            </h1>
 
-          {/* Featured Image */}
-          {article.image && (
-            <div className="article-image">
-              <img src={article.image} alt={article.title} />
+            {/* Featured Image */}
+            {article.image && (
+              <div className="article-image">
+                <img src={article.image} alt={article.title} />
+              </div>
+            )}
+
+            {/* Sidebar Content */}
+            <div className="article-sidebar">
+              {/* Abstract */}
+              <div className="abstract-section">
+                <h2 className="abstract-title text-palatino-body text-white text-center letter-spacing-tight">
+                  Abstract
+                </h2>
+                <p className="abstract-text text-palatino-body text-white text-justify letter-spacing-tight">
+                  {article.abstract}
+                </p>
+              </div>
+
+              {/* AI Breakdown */}
+              <div className="ai-breakdown">
+                <div className="ai-breakdown-item">
+                  <span className="ai-breakdown-label text-palatino-body text-white letter-spacing-tight">
+                    AI-generated
+                  </span>
+                  <div className="ai-breakdown-value">
+                    <div className="ai-breakdown-dot ai-generated"></div>
+                    <span className="ai-breakdown-percent text-palatino-body text-white letter-spacing-tight">
+                      {article.ai_generated_percent}%
+                    </span>
+                  </div>
+                </div>
+
+                <div className="ai-breakdown-item">
+                  <span className="ai-breakdown-label text-palatino-body text-white letter-spacing-tight">
+                    AI-generated & AI-refined
+                  </span>
+                  <div className="ai-breakdown-value">
+                    <div className="ai-breakdown-dot ai-generated-refined"></div>
+                    <span className="ai-breakdown-percent text-palatino-body text-white letter-spacing-tight">
+                      {article.ai_generated_ai_refined_percent}%
+                    </span>
+                  </div>
+                </div>
+
+                <div className="ai-breakdown-item">
+                  <span className="ai-breakdown-label text-palatino-body text-white letter-spacing-tight">
+                    Human-written & AI-refined
+                  </span>
+                  <div className="ai-breakdown-value">
+                    <div className="ai-breakdown-dot human-ai-refined"></div>
+                    <span className="ai-breakdown-percent text-palatino-body text-white letter-spacing-tight">
+                      {article.human_written_ai_refined_percent}%
+                    </span>
+                  </div>
+                </div>
+
+                <div className="ai-breakdown-item">
+                  <span className="ai-breakdown-label text-palatino-body text-white letter-spacing-tight">
+                    Human-written
+                  </span>
+                  <div className="ai-breakdown-value">
+                    <div className="ai-breakdown-dot human-written"></div>
+                    <span className="ai-breakdown-percent text-palatino-body text-white letter-spacing-tight">
+                      {article.human_written_percent}%
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Attribution */}
+              <div className="attribution-section">
+                <div className="author-info">
+                  <div className="author-avatar">
+                    <img 
+                      src={article.author?.avatar_url || david} 
+                      alt={article.author?.full_name || 'Author'} 
+                    />
+                  </div>
+                  <div className="author-details">
+                    <div className="author-name text-cormorant-body text-white-full letter-spacing-normal">
+                      {article.author?.full_name || article.author?.email || 'Author'}
+                    </div>
+                    <div className="publication-date text-cormorant-body text-white letter-spacing-normal">
+                      {formattedDate}
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="quillbot-attribution">
+                  <span className="quillbot-text text-cormorant-body text-white letter-spacing-normal">
+                    By Quillbot
+                  </span>
+                  <div className="quillbot-logo">
+                    <img src={quillbotLogo} alt="Quillbot Logo" />
+                  </div>
+                </div>
+              </div>
             </div>
-          )}
 
-          {/* Sidebar Content */}
-          <div className="article-sidebar">
-            {/* Abstract */}
-            <div className="abstract-section">
-              <h2 className="abstract-title text-palatino-body text-white text-center letter-spacing-tight">
-                Abstract
-              </h2>
-              <p className="abstract-text text-palatino-body text-white text-justify letter-spacing-tight">
-                {article.abstract}
-              </p>
+            {/* Article Body */}
+            <div className="article-body">
+              <div 
+                className="article-content text-palatino-body text-white text-justify letter-spacing-tight"
+                dangerouslySetInnerHTML={{ __html: article.body }}
+              />
             </div>
+          </div>
 
-            {/* AI Breakdown */}
-            <div className="ai-breakdown">
-              <div className="ai-breakdown-item">
-                <span className="ai-breakdown-label text-palatino-body text-white letter-spacing-tight">
-                  AI-generated
-                </span>
-                <div className="ai-breakdown-value">
-                  <div className="ai-breakdown-dot ai-generated"></div>
-                  <span className="ai-breakdown-percent text-palatino-body text-white letter-spacing-tight">
-                    {article.ai_generated_percent}%
-                  </span>
-                </div>
-              </div>
-
-              <div className="ai-breakdown-item">
-                <span className="ai-breakdown-label text-palatino-body text-white letter-spacing-tight">
-                  AI-generated & AI-refined
-                </span>
-                <div className="ai-breakdown-value">
-                  <div className="ai-breakdown-dot ai-generated-refined"></div>
-                  <span className="ai-breakdown-percent text-palatino-body text-white letter-spacing-tight">
-                    {article.ai_generated_ai_refined_percent}%
-                  </span>
-                </div>
-              </div>
-
-              <div className="ai-breakdown-item">
-                <span className="ai-breakdown-label text-palatino-body text-white letter-spacing-tight">
-                  Human-written & AI-refined
-                </span>
-                <div className="ai-breakdown-value">
-                  <div className="ai-breakdown-dot human-ai-refined"></div>
-                  <span className="ai-breakdown-percent text-palatino-body text-white letter-spacing-tight">
-                    {article.human_written_ai_refined_percent}%
-                  </span>
-                </div>
-              </div>
-
-              <div className="ai-breakdown-item">
-                <span className="ai-breakdown-label text-palatino-body text-white letter-spacing-tight">
-                  Human-written
-                </span>
-                <div className="ai-breakdown-value">
-                  <div className="ai-breakdown-dot human-written"></div>
-                  <span className="ai-breakdown-percent text-palatino-body text-white letter-spacing-tight">
-                    {article.human_written_percent}%
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Attribution */}
-            <div className="attribution-section">
-              <div className="author-info">
+          {/* NEW WEB LAYOUT - ONLY SHOWS ON DESKTOP */}
+          <div className="article-web-container">
+            {/* Left Sidebar */}
+            <div className="article-web-sidebar">
+              {/* Spacer for alignment */}
+              <div className="web-sidebar-spacer"></div>
+              
+              {/* Author Info */}
+              <div className="web-author-info">
                 <div className="author-avatar">
                   <img 
                     src={article.author?.avatar_url || david} 
@@ -262,23 +309,104 @@ In a groundbreaking development, the world of artificial intelligence is witness
                 </div>
               </div>
               
-              <div className="quillbot-attribution">
-                <span className="quillbot-text text-cormorant-body text-white letter-spacing-normal">
-                  By Quillbot
-                </span>
-                <div className="quillbot-logo">
-                  <img src={quillbotLogo} alt="Quillbot Logo" />
+              {/* Abstract */}
+              <div className="web-abstract-section">
+                <h2 className="abstract-title text-palatino-body text-white text-center letter-spacing-tight">
+                  Abstract
+                </h2>
+                <p className="abstract-text text-palatino-body text-white text-justify letter-spacing-tight">
+                  {article.abstract}
+                </p>
+              </div>
+
+              {/* AI Breakdown */}
+              <div className="web-ai-breakdown">
+                <div className="ai-breakdown-item">
+                  <span className="ai-breakdown-label text-palatino-body text-white letter-spacing-tight">
+                    AI-generated
+                  </span>
+                  <div className="ai-breakdown-value">
+                    <div className="ai-breakdown-dot ai-generated"></div>
+                    <span className="ai-breakdown-percent text-palatino-body text-white letter-spacing-tight">
+                      {article.ai_generated_percent}%
+                    </span>
+                  </div>
+                </div>
+
+                <div className="ai-breakdown-item">
+                  <span className="ai-breakdown-label text-palatino-body text-white letter-spacing-tight">
+                    AI-generated & AI-refined
+                  </span>
+                  <div className="ai-breakdown-value">
+                    <div className="ai-breakdown-dot ai-generated-refined"></div>
+                    <span className="ai-breakdown-percent text-palatino-body text-white letter-spacing-tight">
+                      {article.ai_generated_ai_refined_percent}%
+                    </span>
+                  </div>
+                </div>
+
+                <div className="ai-breakdown-item">
+                  <span className="ai-breakdown-label text-palatino-body text-white letter-spacing-tight">
+                    Human-written & AI-refined
+                  </span>
+                  <div className="ai-breakdown-value">
+                    <div className="ai-breakdown-dot human-ai-refined"></div>
+                    <span className="ai-breakdown-percent text-palatino-body text-white letter-spacing-tight">
+                      {article.human_written_ai_refined_percent}%
+                    </span>
+                  </div>
+                </div>
+
+                <div className="ai-breakdown-item">
+                  <span className="ai-breakdown-label text-palatino-body text-white letter-spacing-tight">
+                    Human-written
+                  </span>
+                  <div className="ai-breakdown-value">
+                    <div className="ai-breakdown-dot human-written"></div>
+                    <span className="ai-breakdown-percent text-palatino-body text-white letter-spacing-tight">
+                      {article.human_written_percent}%
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Attribution */}
+              <div className="web-attribution">
+                <div className="quillbot-attribution">
+                  <span className="quillbot-text text-cormorant-body text-white letter-spacing-normal">
+                    By Quillbot
+                  </span>
+                  <div className="quillbot-logo">
+                    <img src={quillbotLogo} alt="Quillbot Logo" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Article Body */}
-          <div className="article-body">
-            <div 
-              className="article-content text-palatino-body text-white text-justify letter-spacing-tight"
-              dangerouslySetInnerHTML={{ __html: article.body }}
-            />
+            {/* Main Content */}
+            <div className="article-web-main">
+              {/* Featured Image */}
+              {article.image && (
+                <div className="article-web-image">
+                  <img src={article.image} alt={article.title} />
+                </div>
+              )}
+              
+              {/* Title and Body */}
+              <div className="article-web-content">
+                <h1 className="article-web-title text-cormorant-h1 text-white-full letter-spacing-wide">
+                  {article.title}
+                </h1>
+                
+                <div 
+                  className="article-web-body text-palatino-body text-white text-justify letter-spacing-tight"
+                  dangerouslySetInnerHTML={{ __html: article.body }}
+                />
+              </div>
+            </div>
+
+            {/* Right Spacer */}
+            <div className="article-web-spacer"></div>
           </div>
         </div>
       </main>

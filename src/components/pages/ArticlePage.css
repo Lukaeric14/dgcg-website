@@ -246,3 +246,207 @@
     max-width: 1400px;
   }
 }
+
+/* ==== WEB LAYOUT FOR DESKTOP (KEEPS MOBILE UNCHANGED) ==== */
+
+/* Mobile layout container - visible by default */
+.article-mobile-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+}
+
+/* Web layout container - hidden by default */
+.article-web-container {
+  display: none;
+}
+
+/* Desktop web layout - matches Figma design exactly */
+/* Breakpoint: 1443px total width (215.5 + 50 + 820 + 50 + 215.5 + padding) */
+@media (min-width: 1443px) {
+  /* Hide mobile layout on desktop */
+  .article-mobile-container {
+    display: none;
+  }
+  
+  /* Show web layout on desktop */
+  .article-web-container {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  
+  /* Adjust main container for web layout */
+  .article-container {
+    max-width: none;
+    width: 100%;
+  }
+  
+  /* Left Sidebar - exactly matches Figma: grows/shrinks but min 215.5px */
+  .article-web-sidebar {
+    flex: 1;
+    min-width: 215.5px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    align-items: flex-end;
+  }
+  
+  /* Spacer for vertical alignment */
+  .web-sidebar-spacer {
+    height: 152px;
+  }
+  
+  /* Author info styling - matches Figma */
+  .web-author-info {
+    display: flex;
+    flex-direction: row;
+    gap: 21px;
+    align-items: center;
+    height: 76px;
+  }
+  
+  .web-author-info .author-avatar {
+    width: 74px;
+    height: 76px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .web-author-info .author-details {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 102px;
+  }
+  
+  .web-author-info .author-name {
+    font-size: 28px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+  }
+  
+  .web-author-info .publication-date {
+    font-size: 20px !important;
+    font-weight: 400 !important;
+    line-height: 1.2 !important;
+  }
+  
+  /* Abstract section */
+  .web-abstract-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .web-abstract-section .abstract-title {
+    font-size: 20px !important;
+    line-height: 1.2 !important;
+  }
+  
+  .web-abstract-section .abstract-text {
+    font-size: 18px !important;
+    line-height: 1.2 !important;
+    width: 100%;
+  }
+  
+  /* AI Breakdown */
+  .web-ai-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  .web-ai-breakdown .ai-breakdown-label {
+    font-size: 18px !important;
+    line-height: 1.2 !important;
+  }
+  
+  .web-ai-breakdown .ai-breakdown-percent {
+    font-size: 18px !important;
+    line-height: 1.2 !important;
+  }
+  
+  /* Attribution */
+  .web-attribution {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .web-attribution .quillbot-text {
+    font-size: 20px !important;
+    line-height: 1.2 !important;
+    width: 102px;
+  }
+  
+  /* Main Content Area - NEVER changes size, always 820px, always centered */
+  .article-web-main {
+    flex: 0 0 820px;
+    width: 820px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    min-height: 980px;
+    overflow: visible;
+  }
+  
+  /* Web Image - matches Figma dimensions (820px wide, ~547px tall based on 1536:1024 ratio) */
+  .article-web-image {
+    width: 820px;
+    height: 547px;
+    overflow: visible;
+  }
+  
+  .article-web-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Article content container */
+  .article-web-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  /* Web title styling */
+  .article-web-title {
+    font-size: 40px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    text-align: left !important;
+  }
+  
+  /* Web body text */
+  .article-web-body {
+    font-size: 20px !important;
+    line-height: 1.2 !important;
+  }
+  
+  .article-web-body p {
+    margin-bottom: 1em;
+    line-height: 1.2 !important;
+    text-indent: 2.5em;
+  }
+  
+  .article-web-body p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Right Spacer Column - exactly matches Figma: grows/shrinks but min 215.5px */
+  .article-web-spacer {
+    flex: 1;
+    min-width: 215.5px;
+    height: 632px;
+  }
+}
+
