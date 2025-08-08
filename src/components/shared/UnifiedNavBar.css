@@ -14,7 +14,7 @@
     0px 11.331px 16.996px -3.399px rgba(0, 0, 0, 0.1),
     0px 4.532px 6.798px -4.532px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
-  background: rgba(0, 0, 0, 0.5);
+  background-color: oklch(0.2050 0 0);
 }
 
 .unified-navbar-content {

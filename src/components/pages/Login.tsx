@@ -4,6 +4,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import logoIcon from '../../assets/shortlogodgcgwhite.png';
 import loginArt from '../../assets/LoginArt.png';
 import './Login.css';
+import { useIsMobile } from '../../hooks/use-mobile';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -12,6 +13,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const { signIn } = useAuth();
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -93,16 +95,18 @@ export default function Login() {
             </div>
             
             <div className="login-copyright">
-              © 2025 DGCG ALL RIGHTS RESERVED
+              © 2023 ALL RIGHTS RESERVED
             </div>
           </div>
         </div>
         
-        <div className="login-right-side">
-          <div className="login-art-container">
-            <img src={loginArt} alt="Login Art" className="login-art-image" />
+        {!isMobile && (
+          <div className="login-right-side">
+            <div className="login-art-container">
+              <img src={loginArt} alt="Login Art" className="login-art-image" />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

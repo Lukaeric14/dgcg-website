@@ -4,6 +4,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import logoIcon from '../../assets/shortlogodgcgwhite.png';
 import loginArt from '../../assets/LoginArt.png';
 import './Register.css';
+import { useIsMobile } from '../../hooks/use-mobile';
 
 export default function Register() {
   const [email, setEmail] = useState('');
@@ -14,6 +15,7 @@ export default function Register() {
   const [success, setSuccess] = useState(false);
   const { signUp } = useAuth();
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,8 +49,8 @@ export default function Register() {
           <img src={logoIcon} alt="DGCG Logo" className="nav-logo" />
         </div>
         
-        <div className="register-main-container">
-          <div className="register-success-message">
+      <div className="register-main-container">
+        <div className="register-success-message">
             <h1 className="success-title">Account Created!</h1>
             <p className="success-subtitle">Please check your email to verify your account. You'll be redirected to login shortly.</p>
           </div>
@@ -64,12 +66,14 @@ export default function Register() {
       </div>
       
       <div className="register-main-container">
-        <div className="register-left-side">
-          <div className="register-art-container">
-            <img src={loginArt} alt="Register Art" className="register-art-image" />
+        {!isMobile && (
+          <div className="register-left-side">
+            <div className="register-art-container">
+              <img src={loginArt} alt="Register Art" className="register-art-image" />
+            </div>
           </div>
-        </div>
-        
+        )}
+
         <div className="register-right-side">
           <div className="register-form-container">
             <div className="register-intro">
