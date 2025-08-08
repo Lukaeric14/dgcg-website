@@ -7,6 +7,25 @@
     overflow: visible;
 }
 
+/* Link styling */
+.article-sidebar-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    transition: transform 0.2s ease;
+}
+
+.article-sidebar-link:hover {
+    transform: translateY(-2px);
+}
+
+.article-sidebar-link:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.3);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
 .article-sidebar-card {
     width: 503px;
     flex: 1 1 0%;

@@ -39,7 +39,7 @@ const Home = () => {
           .from('articles')
           .select(`
             *,
-            author:users_profiles(
+            author:authors(
               id,
               email,
               full_name,

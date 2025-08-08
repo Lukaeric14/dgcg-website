@@ -92,38 +92,158 @@ const MyComponent = () => {
 
 ## Figma MCP Integration Guidelines
 
-### When Using Figma MCP Server
+### Figma MCP Workflow - Step by Step
 
-1. **Extract design tokens** from Figma (colors, typography, spacing)
-2. **Map to existing global classes** when possible
-3. **Create new global classes** only if design system doesn't have equivalents
-4. **Component CSS should only handle layout** from Figma designs
+#### 1. **Always Start with Figma Analysis**
+- Use `mcp__figma-dev-mode-mcp-server__get_code` to get current selection
+- Use `mcp__figma-dev-mode-mcp-server__get_image` to see visual design
+- Extract exact dimensions, breakpoints, and responsive behavior from Figma code
 
-### Figma to Code Workflow
+#### 2. **Follow Figma's Responsive Rules Exactly**
+- **Use Figma's breakpoints** - Don't create custom media queries
+- **Preserve exact dimensions** - If Figma shows `820px`, use `820px`
+- **Follow min-width constraints** - Figma's `min-w-[215.5px]` becomes `min-width: 215.5px`
+- **Respect flex behavior** - `flex: 1` vs `flex: 0 0 820px` from Figma code
 
-1. **Analyze Figma design** for:
-   - Typography (font family, size, weight, letter spacing)
-   - Colors (text, background, borders)
-   - Layout (spacing, positioning, flexbox/grid)
+#### 3. **Layout Preservation Strategy**
 
-2. **Map to global classes**:
-   ```tsx
-   // Figma: 48px Cormorant Garamond Bold
-   <h1 className="text-cormorant-h1 text-white">
-   
-   // Figma: 16px Inter Regular
-   <p className="text-admin-body text-admin-gray">
-   ```
+**When adding new layouts:**
+```css
+/* Mobile layout - visible by default */
+.component-mobile-container {
+  display: flex;
+  /* existing mobile styles unchanged */
+}
 
-3. **Create component CSS** for layout only:
-   ```css
-   .figma-component {
-     display: flex;
-     gap: 24px;
-     padding: 32px;
-     border-radius: 16px;
-   }
-   ```
+/* Web layout - hidden by default */
+.component-web-container {
+  display: none;
+}
+
+/* Show web layout only at Figma's exact breakpoint */
+@media (min-width: 1443px) {
+  .component-mobile-container {
+    display: none;
+  }
+  
+  .component-web-container {
+    display: flex;
+    /* Figma-extracted layout rules */
+  }
+}
+```
+
+#### 4. **Figma Dimension Mapping**
+
+**Extract from Figma code:**
+- `min-w-[215.5px]` → `min-width: 215.5px`
+- `w-[820px]` → `width: 820px`
+- `gap-[50px]` → `gap: 50px`
+- `h-[980px]` → `height: 980px` (use `min-height` if content can overflow)
+
+**Typography mapping:**
+- `text-[28px]` + `font-['Cormorant_Garamond:SemiBold']` → Use existing `text-cormorant-body` class
+- `leading-[1.2]` → `line-height: 1.2 !important` if overriding global classes
+
+#### 5. **Figma to Code Workflow**
+
+**Step 1: Analyze Figma Selection**
+```bash
+# Get current Figma selection details
+mcp__figma-dev-mode-mcp-server__get_code
+mcp__figma-dev-mode-mcp-server__get_image
+```
+
+**Step 2: Map to Global Classes**
+```tsx
+// ✅ Good - Use global typography classes
+<h1 className="text-cormorant-h1 text-white letter-spacing-wide">
+// ❌ Bad - Don't create new font classes for existing fonts
+<h1 className="custom-title-font">
+```
+
+**Step 3: Component CSS for Layout Only**
+```css
+/* ✅ Good - Layout extracted from Figma */
+.figma-component-web {
+  flex: 0 0 820px;  /* From Figma: flex="0 0 820px" */
+  gap: 50px;        /* From Figma: gap-[50px] */
+  min-width: 215.5px; /* From Figma: min-w-[215.5px] */
+}
+
+/* ❌ Bad - Don't add typography to component CSS */
+.figma-component-web h1 {
+  font-family: 'Cormorant Garamond';
+  font-size: 40px;
+}
+```
+
+#### 6. **Responsive Breakpoint Rules**
+
+**✅ Use Figma's exact breakpoints:**
+```css
+/* Figma shows breakpoint at 1443px total width */
+@media (min-width: 1443px) {
+  /* Web layout rules */
+}
+```
+
+**❌ Don't create arbitrary breakpoints:**
+```css
+/* Don't do this */
+@media (min-width: 1024px) {
+  /* Custom responsive rules */
+}
+```
+
+#### 7. **Image and Asset Handling**
+
+**From Figma MCP:**
+- Images come as `http://localhost:3845/assets/...` URLs
+- Use these directly in development
+- Replace with actual asset paths in production
+
+**CSS for images:**
+```css
+/* ✅ Explicit dimensions from Figma */
+.figma-image {
+  width: 820px;      /* From Figma design */
+  height: 547px;     /* Calculated from aspect ratio */
+  overflow: visible; /* Avoid cropping issues */
+}
+
+/* ❌ Don't rely on aspect-ratio alone */
+.figma-image {
+  width: 100%;
+  aspect-ratio: 1536/1024; /* Browser support issues */
+}
+```
+
+### Common Figma Integration Patterns
+
+#### Multi-Layout Components
+```tsx
+// ✅ Good - Dual layout structure
+<div className="component-container">
+  {/* Mobile/Tablet - unchanged */}
+  <div className="component-mobile-container">
+    {/* Original mobile code exactly as-is */}
+  </div>
+  
+  {/* Web - new Figma layout */}
+  <div className="component-web-container">
+    {/* Figma-extracted layout */}
+  </div>
+</div>
+```
+
+#### Flex Layout from Figma
+```css
+/* Extract exact flex rules from Figma code */
+.sidebar { flex: 1; min-width: 215.5px; }        /* grows/shrinks */
+.main-content { flex: 0 0 820px; }               /* fixed width */
+.spacer { flex: 1; min-width: 215.5px; }         /* grows/shrinks */
+```
 
 ## Route-Based Styling
 

@@ -44,7 +44,7 @@ const ArticlePage: React.FC = () => {
             .from('articles')
             .select(`
               *,
-              author:users_profiles(
+              author:authors(
                 id,
                 email,
                 full_name,
@@ -101,7 +101,7 @@ In a groundbreaking development, the world of artificial intelligence is witness
           .from('articles')
           .select(`
             *,
-            author:users_profiles(
+            author:authors(
               id,
               email,
               full_name,
