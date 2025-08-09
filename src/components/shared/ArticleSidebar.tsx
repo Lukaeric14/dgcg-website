@@ -5,6 +5,7 @@ import React from "react";
 import { getUserInitials } from '../../lib/utils';
 import PremiumBadge from './PremiumBadge';
 import FreeBadge from './FreeBadge';
+import ImageWithSkeleton from './ImageWithSkeleton';
 import "./ArticleSidebar.css";
 
 interface Article {
@@ -33,14 +34,10 @@ export default function ArticleSidebar({ articles }: ArticleSidebarProps) {
                 <Link key={article.id} to={`/article/${article.id}`} className="article-sidebar-link">
                     <Card className="article-sidebar-card">
                         <CardContent className="article-sidebar-card-content">
-                            <img
+                            <ImageWithSkeleton
                                 className="article-sidebar-image"
                                 alt="Article thumbnail"
                                 src={article.image || '/api/placeholder/165/165'}
-                                onError={(e) => {
-                                    const target = e.target as HTMLImageElement;
-                                    target.src = '/api/placeholder/165/165';
-                                }}
                             />
                             <div className="article-sidebar-info">
                                 <div className="article-sidebar-title-container">

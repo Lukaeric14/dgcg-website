@@ -100,42 +100,16 @@
   }
   
   .paywall-title {
-    font-size: 24px;
-    letter-spacing: -0.4px;
+    font-size: 28px;
   }
   
   .paywall-subscribe-button {
     width: 100%;
     max-width: 350px;
-    font-size: 18px;
-    padding: 12px 0;
   }
   
   .paywall-login-text {
     width: auto;
     max-width: 300px;
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .paywall-content {
-    padding: 30px 15px;
-    gap: 30px;
-  }
-  
-  .paywall-title {
-    font-size: 20px;
-    letter-spacing: -0.3px;
-    line-height: 1.3;
-  }
-  
-  .paywall-subscribe-button {
-    font-size: 16px;
-    padding: 10px 0;
-  }
-  
-  .paywall-login-text {
-    font-size: 14px;
   }
 }

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
+import { useAuth } from '../../contexts/AuthContext';
 // import { getUserInitials } from '../lib/utils'; // Future use for fallback avatars
 import david from '../../assets/david.png';
 import quillbotLogo from '../../assets/quillbot.png';
 import PaywallOverlay from '../shared/PaywallOverlay';
+import ImageWithSkeleton from '../shared/ImageWithSkeleton';
 import './ArticlePage.css';
 
 
@@ -32,9 +34,71 @@ interface Article {
 
 const ArticlePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const { user } = useAuth();
   const [article, setArticle] = useState<Article | null>(null);
+  const [userProfile, setUserProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Function to check if user should see paywall
+  const shouldShowPaywall = (article: Article): boolean => {
+    // If article is free, never show paywall
+    if (article.access_type === 'free') {
+      return false;
+    }
+    
+    // If user is not logged in, show paywall for paid content
+    if (!user) {
+      return true;
+    }
+    
+    // If user profile is loaded, check their type
+    if (userProfile) {
+      // If user is admin, never show paywall
+      if (userProfile.type === 'admin') {
+        return false;
+      }
+      
+      // If user is paid subscriber, don't show paywall
+      if (userProfile.type === 'paid_user') {
+        return false;
+      }
+    }
+    
+    // Default: show paywall for paid content
+    return true;
+  };
+
+  // Fetch user profile when user changes
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      if (!user) {
+        setUserProfile(null);
+        return;
+      }
+
+      try {
+        const { data, error } = await supabase
+          .from('users_profiles')
+          .select('*')
+          .eq('id', user.id)
+          .single();
+
+        if (error) {
+          console.error('Error fetching user profile:', error);
+          setUserProfile(null);
+        } else {
+          console.log('User profile fetched:', data);
+          setUserProfile(data);
+        }
+      } catch (err) {
+        console.error('Error in fetchUserProfile:', err);
+        setUserProfile(null);
+      }
+    };
+
+    fetchUserProfile();
+  }, [user]);
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -181,7 +245,10 @@ In a groundbreaking development, the world of artificial intelligence is witness
             {/* Featured Image */}
             {article.image && (
               <div className="article-image">
-                <img src={article.image} alt={article.title} />
+                <ImageWithSkeleton 
+                  src={article.image} 
+                  alt={article.title}
+                />
               </div>
             )}
 
@@ -281,10 +348,10 @@ In a groundbreaking development, the world of artificial intelligence is witness
             {/* Article Body */}
             <div className="article-body" style={{ position: 'relative' }}>
               <div 
-                className={`article-content text-palatino-body text-white text-justify letter-spacing-tight ${article.access_type === 'paid' ? 'paywall-content-preview' : ''}`}
+                className={`article-content text-palatino-body text-white text-justify letter-spacing-tight ${shouldShowPaywall(article) ? 'paywall-content-preview' : ''}`}
                 dangerouslySetInnerHTML={{ __html: article.body }}
               />
-              {article.access_type === 'paid' && <PaywallOverlay />}
+              {shouldShowPaywall(article) && <PaywallOverlay />}
             </div>
           </div>
 
@@ -392,7 +459,10 @@ In a groundbreaking development, the world of artificial intelligence is witness
               {/* Featured Image */}
               {article.image && (
                 <div className="article-web-image">
-                  <img src={article.image} alt={article.title} />
+                  <ImageWithSkeleton 
+                    src={article.image} 
+                    alt={article.title}
+                  />
                 </div>
               )}
               
@@ -403,10 +473,10 @@ In a groundbreaking development, the world of artificial intelligence is witness
                 </h1>
                 
                 <div 
-                  className={`article-web-body text-palatino-body text-white text-justify letter-spacing-tight ${article.access_type === 'paid' ? 'paywall-content-preview' : ''}`}
+                  className={`article-web-body text-palatino-body text-white text-justify letter-spacing-tight ${shouldShowPaywall(article) ? 'paywall-content-preview' : ''}`}
                   dangerouslySetInnerHTML={{ __html: article.body }}
                 />
-                {article.access_type === 'paid' && <PaywallOverlay />}
+                {shouldShowPaywall(article) && <PaywallOverlay />}
               </div>
             </div>
 

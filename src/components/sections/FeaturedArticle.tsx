@@ -7,6 +7,7 @@ import { getUserInitials } from '../../lib/utils';
 import david from '../../assets/david.png';
 import PremiumBadge from '../shared/PremiumBadge';
 import FreeBadge from '../shared/FreeBadge';
+import ImageWithSkeleton from '../shared/ImageWithSkeleton';
 import './FeaturedArticle.css';
 
 type ArticleAccessType = 'free' | 'paid';
@@ -42,7 +43,7 @@ const FeaturedArticle: React.FC<FeaturedArticleProps> = ({ article }) => {
     <Link to={`/article/${article.id}`} className="featured-article-link">
       <Card className="featured-article-card">
         <CardContent className="featured-card-content">
-          <img
+          <ImageWithSkeleton
             className="featured-article-image"
             alt={article.title}
             src={article.image || ''}
