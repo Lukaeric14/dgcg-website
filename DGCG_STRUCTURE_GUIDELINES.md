@@ -8,8 +8,7 @@ DGCG (David/Goliath Consulting Group) is a React TypeScript website with unified
 ### Public Website Navigation
 - **UnifiedNavBar**: Single navigation component used across all public pages
 - **Variants**: `default`, `article`, `consulting`
-- **Features**: User authentication, manifesto click, admin panel access (admin users only)
-- **User Display**: Capitalized first name from email (e.g., `luka.eric@example.com` → `Luka eric`)
+- **Features**: User authentication, admin panel access (admin users only)
 
 ### Admin Navigation
 - **Prefix**: All admin components use `admin-nav-` prefix
@@ -72,14 +71,6 @@ const { data: profile } = await supabase
   .eq('id', user.id)
   .single();
 const isAdmin = profile?.type === 'admin';
-```
-
-### User Display Name
-```typescript
-const getUserDisplayName = (email: string) => {
-  const name = email.split('@')[0].replace(/[._]/g, ' ');
-  return name.charAt(0).toUpperCase() + name.slice(1);
-};
 ```
 
 ### Navigation Variants

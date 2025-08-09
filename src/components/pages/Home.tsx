@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabase';
 
 // Types
-type ArticleAccessType = 'free' | 'premium' | 'enterprise';
+type ArticleAccessType = 'free' | 'paid';
 
 interface Article {
   id: string;

@@ -1,0 +1,30 @@
+.free-badge {
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 6px 10px;
+  border-radius: 79px;
+}
+
+.free-badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 6px;
+}
+
+.free-badge-image {
+  width: 18px;
+  height: 18px;
+  opacity: 0.8;
+}
+
+.free-badge-text {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.2;
+  letter-spacing: 0.18px;
+  padding-right: 6px;
+}

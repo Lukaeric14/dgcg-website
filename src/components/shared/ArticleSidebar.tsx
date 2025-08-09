@@ -3,6 +3,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Card, CardContent } from "../ui/card";
 import React from "react";
 import { getUserInitials } from '../../lib/utils';
+import PremiumBadge from './PremiumBadge';
+import FreeBadge from './FreeBadge';
 import "./ArticleSidebar.css";
 
 interface Article {
@@ -11,7 +13,7 @@ interface Article {
     image: string | null;
     author_id: string;
     created_at: string;
-    access_type: 'free' | 'premium' | 'enterprise';
+    access_type: 'free' | 'paid';
     author?: {
         id: string;
         email: string;
@@ -61,6 +63,12 @@ export default function ArticleSidebar({ articles }: ArticleSidebarProps) {
                                             {article.author?.full_name || article.author?.email || "Author"}
                                         </span>
                                     </div>
+                                    {article.access_type === 'paid' && (
+                                        <PremiumBadge />
+                                    )}
+                                    {article.access_type === 'free' && (
+                                        <FreeBadge />
+                                    )}
                                 </div>
                             </div>
                         </CardContent>

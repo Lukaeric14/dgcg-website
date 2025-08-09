@@ -5,9 +5,11 @@ import { Card, CardContent } from "../ui/card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { getUserInitials } from '../../lib/utils';
 import david from '../../assets/david.png';
+import PremiumBadge from '../shared/PremiumBadge';
+import FreeBadge from '../shared/FreeBadge';
 import './FeaturedArticle.css';
 
-type ArticleAccessType = 'free' | 'premium' | 'enterprise';
+type ArticleAccessType = 'free' | 'paid';
 
 interface Article {
   id: string;
@@ -76,13 +78,21 @@ const FeaturedArticle: React.FC<FeaturedArticleProps> = ({ article }) => {
               </div>
             </div>
 
-            <div className="navigation-buttons">
-              <Button className="navigation-button">
-                <ChevronLeft className="navigation-icon" />
-              </Button>
-              <Button className="navigation-button">
-                <ChevronRight className="navigation-icon" />
-              </Button>
+            <div className="featured-article-right-section">
+              {article.access_type === 'paid' && (
+                <PremiumBadge />
+              )}
+              {article.access_type === 'free' && (
+                <FreeBadge />
+              )}
+              <div className="navigation-buttons">
+                <Button className="navigation-button">
+                  <ChevronLeft className="navigation-icon" />
+                </Button>
+                <Button className="navigation-button">
+                  <ChevronRight className="navigation-icon" />
+                </Button>
+              </div>
             </div>
           </div>
         </CardContent>

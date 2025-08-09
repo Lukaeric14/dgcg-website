@@ -86,6 +86,12 @@
   line-height: 1.2;
 }
 
+.featured-article-right-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .navigation-buttons {
   display: flex;
   align-items: center;

@@ -1,0 +1,31 @@
+.premium-badge {
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 2px 10px;
+  border-radius: 79px;
+}
+
+.premium-badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25.677px;
+  height: 25.677px;
+  transform: rotate(45deg);
+}
+
+.premium-badge-image {
+  width: 18px;
+  height: 18px;
+  opacity: 0.8;
+}
+
+.premium-badge-text {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.2;
+  letter-spacing: 0.18px;
+}
