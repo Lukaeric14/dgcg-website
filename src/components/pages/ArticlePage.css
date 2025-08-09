@@ -7,6 +7,30 @@
   padding-top: 150px; /* Account for fixed navbar */
 }
 
+/* Paywall Content Preview */
+.paywall-content-preview {
+  max-height: 27em; /* Show even more content - approximately 15-18 lines */
+  overflow: hidden;
+  position: relative;
+}
+
+.paywall-content-preview::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4em;
+  background: linear-gradient(
+    180deg,
+    rgba(23, 23, 23, 0) 0%,
+    rgba(23, 23, 23, 0.4) 20%,
+    rgba(23, 23, 23, 0.8) 30%,
+    rgba(23, 23, 23, 1) 100%
+  ); 
+  pointer-events: none;
+}
+
 /* Loading, Error, and Not Found States */
 .loading-container,
 .error-container,

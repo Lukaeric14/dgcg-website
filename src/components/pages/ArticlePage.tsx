@@ -4,6 +4,7 @@ import { supabase } from '../../lib/supabase';
 // import { getUserInitials } from '../lib/utils'; // Future use for fallback avatars
 import david from '../../assets/david.png';
 import quillbotLogo from '../../assets/quillbot.png';
+import PaywallOverlay from '../shared/PaywallOverlay';
 import './ArticlePage.css';
 
 
@@ -16,6 +17,7 @@ interface Article {
   image: string | null;
   created_at: string;
   author_id: string;
+  access_type: 'free' | 'paid';
   author?: {
     id: string;
     email: string;
@@ -77,6 +79,7 @@ In a groundbreaking development, the world of artificial intelligence is witness
             image: david,
             created_at: '2025-07-31',
             author_id: 'sample',
+            access_type: 'paid',
             author: {
               id: 'sample',
               email: 'luka@dgcg.com',
@@ -276,11 +279,12 @@ In a groundbreaking development, the world of artificial intelligence is witness
             </div>
 
             {/* Article Body */}
-            <div className="article-body">
+            <div className="article-body" style={{ position: 'relative' }}>
               <div 
-                className="article-content text-palatino-body text-white text-justify letter-spacing-tight"
+                className={`article-content text-palatino-body text-white text-justify letter-spacing-tight ${article.access_type === 'paid' ? 'paywall-content-preview' : ''}`}
                 dangerouslySetInnerHTML={{ __html: article.body }}
               />
+              {article.access_type === 'paid' && <PaywallOverlay />}
             </div>
           </div>
 
@@ -393,15 +397,16 @@ In a groundbreaking development, the world of artificial intelligence is witness
               )}
               
               {/* Title and Body */}
-              <div className="article-web-content">
+              <div className="article-web-content" style={{ position: 'relative' }}>
                 <h1 className="article-web-title text-cormorant-h1 text-white-full letter-spacing-wide">
                   {article.title}
                 </h1>
                 
                 <div 
-                  className="article-web-body text-palatino-body text-white text-justify letter-spacing-tight"
+                  className={`article-web-body text-palatino-body text-white text-justify letter-spacing-tight ${article.access_type === 'paid' ? 'paywall-content-preview' : ''}`}
                   dangerouslySetInnerHTML={{ __html: article.body }}
                 />
+                {article.access_type === 'paid' && <PaywallOverlay />}
               </div>
             </div>
 

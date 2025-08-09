@@ -53,17 +53,29 @@
 }
 
 .pricing-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 16px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.pricing-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
 .pricing-card.popular {
   transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(166, 42, 30, 0.3);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.pricing-card.popular:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(166, 42, 30, 0.4);
 }
 
 .popular-badge {
@@ -84,6 +96,7 @@
 .pricing-card-description {
   margin: 0 0 16px 0;
   line-height: 1.4;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .price {
@@ -92,6 +105,7 @@
 
 .price-period {
   margin-left: 4px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .pricing-card-content {
@@ -109,6 +123,7 @@
   align-items: flex-start;
   margin-bottom: 12px;
   line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .features-list li:last-child {
@@ -132,22 +147,27 @@
 }
 
 .pricing-btn-primary {
-  background-color: #ffffff;
-  border-color: #ffffff;
+  background-color: #a62a1e;
+  border-color: #a62a1e;
+  color: #ffffff;
 }
 
 .pricing-btn-primary:hover {
-  background-color: #f3f4f6;
-  border-color: #f3f4f6;
+  background-color: #8b231a;
+  border-color: #8b231a;
+  color: #ffffff;
 }
 
 .pricing-btn-outline {
   background-color: transparent;
-  border-color: #6b7280;
+  border-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .pricing-btn-outline:hover {
-  background-color: #374151;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
 }
 
 .pricing-footer {
